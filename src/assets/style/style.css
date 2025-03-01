@@ -16,6 +16,11 @@ li{
 .nav-bar{
     padding:30px;
 }
+.nav-bar .right{
+    background-image: url(../images/g4.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 /* Flex container */
 .flex-container {
     display: flex;
@@ -271,6 +276,10 @@ li{
     width: calc(90% - 60px);
     padding: 30px;
     margin-left: 5%;
+}
+.width-75{
+    width: 80%;
+    margin-left: 10%;
 }
 .main-title{
     color:#3E3E3F;
@@ -708,6 +717,11 @@ li{
     font-weight: 900;
     color:#ffffff;
 }
+.main-about .review-topic .h-card-inner-text{
+    margin-top:-15%;
+    margin-left: -35%;
+    rotate: -30deg;
+}
 .f-width.footer{
     background-color: #303030;
     padding: 30px;
@@ -795,6 +809,65 @@ li{
     width: 90%;
     margin-left: 5%;
     font-size: 16px;
+}
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  background-color:#303030; /* Green background */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+.back-to-top:hover {
+  opacity: 1; /* Fully visible on hover */
+}
+.about-banner{
+    height: 40vh;
+    background-image: url(../logo/planner-4233907_1280.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.f-height{
+    height: 100%;
+}
+.about-banner-front{
+    background-color: #000;
+    z-index: 1;
+    opacity: 0.6;
+}
+.about-banner-text{
+    z-index: 2;
+}
+.about-banner-text-inner{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.page-title{
+    font-size: 36px;
+    font-weight: 800;
+    color: #ffffff;
+}
+.main-about{
+    height: 70vh;
+    overflow: hidden;
+}
+.page-title-sub-text,
+.page-title-sub-text a{
+    color: #ffffff;
+}
+.with-bg{
+    background-image: url(../images/rect1.png);
+    background-repeat: no-repeat;
+}
+.main-about .review-card{
+    box-shadow: none;
 }
 
 /*************

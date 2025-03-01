@@ -12,9 +12,9 @@
             <router-link to="/contact-us" active-class="btn-active" class="nav-btn">CONTACT US</router-link>
         </div>
         <div class="right right-content">
-            <i class="fa-solid fa-search default-icon"></i>
+            <!-- <i class="fa-solid fa-search default-icon"></i>
             <i class="fa-solid fa-phone default-icon"></i>
-            <i class="fa-solid fa-envelope default-icon"></i>
+            <i class="fa-solid fa-envelope default-icon"></i> -->
         </div>
     </div>
 </template>
