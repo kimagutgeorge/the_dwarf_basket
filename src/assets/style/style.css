@@ -10,6 +10,9 @@ body{
 a{
     text-decoration: none;
 }
+li{
+    list-style: none;
+}
 .nav-bar{
     padding:30px;
 }
@@ -45,6 +48,7 @@ a{
 }
 .logo-img{
     width:40px;
+    height: 40px;
 }
 .title-text{
     font-size: 22px;
@@ -598,7 +602,200 @@ a{
     border-radius: 50%;
     color:#ffffff;
 }
+.home-cat.reviews{
+    margin-top: 10vh;
+    background-color: rgb(240, 240, 240);
+    overflow:hidden;
+}
+.review-card{
+    margin-top: 15vh;
+    width: calc(70% - 60px);
+    margin-left:15%;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgb(220, 220, 220);
+}
+.review-pagination{
+    margin: 5vh 15% 15vh 15%;
+    width: 70%;
+}
+.paginate-btn{
+    padding: 4px 10px;
+    border:0px;
+    background-color: transparent;
+    font-size: 20px;
+    cursor: pointer;
+    color:#3E3E3F;
+    transition: 0.4s ease-in-out;
+}
+.paginate-btn:hover{
+    background-color: rgb(0, 130, 189);
+    color: #ffffff;
+}
+.review-card img{
+    width: 60px;
+    height: auto;
+}
+.review-card span{
+    margin-left: 20px;
+    font-size: 22px;
+    margin-top: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 900;
+    color:#3E3E3F;
+}
+.review-body{
+    margin-top: 20px;
+}
+.review-body .fixed-flexed{
+    margin-top: 30px;
+}
+.review-body .fixed-flexed .fa-solid{
+    color:#EBA121;
+    font-size: 18px;
+    margin-right: 6px;
+}
+.review-topic{
+    margin: 15vh 15% 0 15%;
+    width: 70%;
+    position: relative;
+}
 
+.review-topic.h-card{
+    width: 100%;
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    text-align: center;
+}
+.review-topic .h-card-inner{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.review-topic .h-card-bg{
+    height: 300px;
+    width: 300px;
+    left: calc(50% - 300px);
+    background-color: rgb(26, 112, 240);
+    border-radius: 80px;
+    rotate: 45deg;
+    z-index: 2;
+}
+.review-topic .h-card-bg .fa-solid{
+    rotate: -45deg;
+    font-size: 40px;
+    margin-top: 20px;
+}
+.review-topic .h-card-bg-1{
+    height: 360px;
+    width: 360px;
+    left: calc(50% - 360px);
+    background-color:rgb(41, 106, 244);
+    border-radius: 100px;
+    rotate: 35deg;
+    opacity: 0.8;
+    z-index: 1;
+}
+.review-topic .h-card-inner-text{
+    margin-left: -10%;
+    margin-top: 25%;
+    rotate: -45deg;
+    font-size: 26px;
+    font-weight: 900;
+    color:#ffffff;
+}
+.f-width.footer{
+    background-color: #303030;
+    padding: 30px;
+    width: calc(100% - 60px);
+}
+.col-20{
+    width: 20%;
+}
+.col-30{
+    width: 30%;
+}
+.f-width.footer .col-30 span{
+    margin-top: 5px;
+    font-size: 22px;
+    color:#ffffff;
+    margin-left:10px;
+    font-weight: 900;
+}
+.f-width.f-width.footer .col-20 .col-body,
+.f-width.f-width.footer .col-30 .col-body{
+    width: 90%;
+    margin-left: 5%;
+}
+.f-width.f-width.footer .col-30 .col-body p{
+    margin-top: 30px;
+    color: rgb(150, 150, 150);
+}
+.f-width.f-width.footer .col-30 .col-body h4,
+.f-width.f-width.footer .col-20 .col-body h4{
+    font-weight: 800;
+    color: #ffffff;
+    font-size: 22px;
+}
+.col-body-link{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.footer-link{
+    color: rgb(150, 150, 150);
+    cursor: pointer;
+}
+.touch{
+    color: rgb(150, 150, 150);
+    margin-bottom: 10px;
+}
+.col-body li{
+    margin-bottom: 10px;
+}
+.footer-link .fa-solid{
+    color: rgb(26, 112, 240);
+    display: none;
+    font-size: 14px;
+    margin-right: 5px;
+    margin-top: 3px;
+}
+.footer-link:hover > .fa-solid{
+    display: block;
+}
+.footer-link:hover{
+    color: #ffffff;
+}
+.touch .fa-solid{
+    margin-right: 10px;
+    margin-top: 5px;
+}
+.footer-icons{
+    margin-top: 30px;
+}
+.footer-icons .fa-brands{
+    color:#ffffff;
+    font-size: 15px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+.footer-icons .fa-brands:hover{
+    color: rgb(150, 150, 150);
+}
+.footer-bottom.f-width{
+    background-color: #3f3f3f;
+    padding: 20px 0px;
+}
+.footer-bottom.f-width p{
+    color: rgb(150, 150, 150);
+    width: 90%;
+    margin-left: 5%;
+    font-size: 16px;
+}
 
 /*************
 *************
