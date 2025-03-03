@@ -50,6 +50,7 @@ li{
 }
 .d-flex{
     display: flex;
+    flex-wrap: wrap;
 }
 .logo-img{
     width:40px;
@@ -921,6 +922,12 @@ img.width-60{
 .width-q{
     width:40%;
 }
+.width-30{
+    width: 30%;
+}
+.width-70{
+    width: 70%;
+}
 .service-card.half{
     padding: 10px;
     width: calc(50% - 20px);
@@ -937,6 +944,72 @@ img.width-60{
 .service-card.half .width-q-3 h4{
     font-size: 16px;
     margin-bottom: 10px;
+}
+.search-box{
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: 5px;
+    padding: 10px;
+}
+.f-input{
+    padding: 7px;
+    border: 0px;
+    width: calc( 80% - 14px);
+    margin-left: 5%;
+}
+.f-90{
+    width: 90%;
+}
+.f-input:focus{
+    outline: none;
+}
+.btn-search{
+    border:0px;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 22px;
+    color: rgb(150, 150, 150);
+}
+.product-cats{
+    margin-top: 20px;
+    color:#303030;
+}
+.product-cats h4{
+    font-weight: 800;
+    font-size: 20px;
+}
+.the-stats{
+    margin-top: 20px;
+    height: 60vh;
+    overflow-y: scroll;
+}
+.the-stats::-webkit-scrollbar{
+    width: 7px;
+    border-radius: 5px;
+}
+.the-stats::-webkit-scrollbar-thumb{
+    background-color: rgb(200, 200, 200);
+}
+.the-stats li{
+    cursor: pointer;
+    width: fit-content;
+    list-style: circle;
+    transition: 0.2s ease-in-out;
+    margin-bottom: 15px;
+}
+.the-stats li:hover{
+    color: rgb(0, 130, 189);
+}
+.the-stats li a{
+    color:#303030;
+}
+.products{
+    margin-top: 20px;
+}
+.active-cat{
+    color: rgb(0, 130, 189);
+}
+.shop-page .cat-card-holder .cat-card-holder-front{
+    text-align: center;
 }
 
 

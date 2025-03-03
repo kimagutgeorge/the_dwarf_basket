@@ -1,16 +1,6 @@
 <template>
   <NavBar/>
-  <div class="flex-container about-banner f-width p-relative">
-    <div class="about-banner-front f-width f-height p-absolute"></div>
-    <div class="about-banner-text f-width f-height p-absolute d-flex">
-      <div class="about-home d-flex f-width centered-content">
-        <div class="about-banner-text-inner f-width f-height">
-          <h2 class="page-title">About Us</h2>
-          <p class="page-title-sub-text"><router-link to="/">Home</router-link> | About</p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <PageBanner title="About Us" text="About" />
   <!-- below about -->
    <div class="flex-container main-about f-width">
     <div class="half f-height">
@@ -145,9 +135,10 @@
 import NavBar from '@/components/users/NavBar.vue';
 import ClientFooter from '@/components/users/ClientFooter.vue';
 import ClientStats from '@/components/users/ClientStats.vue';
+import PageBanner from '@/layouts/PageBanner.vue';
 
 export default {
 name: 'HomeView',
-components: { NavBar, ClientFooter, ClientStats }
+components: { NavBar, ClientFooter, ClientStats, PageBanner }
 }
 </script>
