@@ -1,13 +1,13 @@
 <template>
     <NavBar/>
-    <PageBanner title="Contact Us" text="Contact Us" />
+    <PageBanner title="Enquire" text="Enquire" />
     <!-- shop -->
     <!-- services -->
   <div class="flex-container main-about f-width">
     <div class="half f-height">
-      <div class="review-card with-bg">
+      <div class="review-card">
         <div class="review-card-top fixed-flexed">
-          <h2 class="main-title">Get In Touch</h2>
+          <h2 class="main-title">Enquire</h2>
         </div>
         <div class="review-body">
           <p>
@@ -46,7 +46,8 @@
     import PageBanner from '@/components/users/PageBanner.vue';
     
     export default {
-    name: 'ContactView',
+    name: 'EnquireView',
+    props: ['id'],
     components: { NavBar, ClientFooter, PageBanner }
     }
     </script>

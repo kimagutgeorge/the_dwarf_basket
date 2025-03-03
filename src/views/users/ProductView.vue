@@ -94,7 +94,7 @@
 <script>
 import NavBar from '@/components/users/NavBar.vue';
 import ClientFooter from '@/components/users/ClientFooter.vue';
-import PageBanner from '@/layouts/PageBanner.vue';
+import PageBanner from '@/components/users/PageBanner.vue';
 
 export default {
 name: 'ProductView',

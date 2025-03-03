@@ -68,7 +68,7 @@
     </div>
   </div>
   <!-- services -->
-  <div class="flex-container main-about f-width">
+  <div class="flex-container main-about f-width" style="height:fit-content;">
     <div class="half f-height">
       <div class="review-card">
         <div class="review-card-top fixed-flexed">
@@ -78,6 +78,7 @@
           <p>At The Dwarf Basket, we help businesses build strong and memorable brands through creative design and strategic marketing. Whether you need a logo, website, social media branding, or product packaging, we craft visuals and messages that connect with your audience.</p>
 
           <p>Our services also include digital marketing, print advertising, and corporate branding to ensure your brand stands out across all platforms. Whether you're starting fresh or refreshing your identity, we tailor our solutions to bring your vision to life.</p>
+          <router-link to="/services"><button class="btn-default" style="margin-left: 0%; margin-top: 40px;">Learn More</button></router-link>
         </div>
       </div>
     </div>
@@ -135,7 +136,7 @@
 import NavBar from '@/components/users/NavBar.vue';
 import ClientFooter from '@/components/users/ClientFooter.vue';
 import ClientStats from '@/components/users/ClientStats.vue';
-import PageBanner from '@/layouts/PageBanner.vue';
+import PageBanner from '@/components/users/PageBanner.vue';
 
 export default {
 name: 'HomeView',

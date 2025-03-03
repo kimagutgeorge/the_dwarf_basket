@@ -1013,7 +1013,7 @@ img.width-60{
 }
 .f-input-contact.q3-row,
 .f-input-contact.f-width{
-    padding: 10px 10px;
+    padding: 7px 10px;
     border: 1px solid rgb(200, 200, 200);
     border-radius: 3px;
     margin-top: 10px;
@@ -1043,7 +1043,84 @@ img.width-60{
 textarea{
     height: 120px;
 }
-
+.round-card{
+    width: 150px;
+    height: 150px;
+    background-color: transparent;
+    border: 15px solid rgb(0, 130, 189);
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+.round-card-inner{
+    flex-direction: column;
+    justify-content: center;
+}
+.round-card-inner .fa-solid{
+    font-size: 32px;
+    color: rgb(0, 130, 189);
+}
+.round-card-inner p{
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 5px;
+}
+.service-full-card{
+    flex-direction: column;
+    justify-content: center;
+}
+.service-full-card img{
+    width: 100%;
+}
+.service-full-card.d-flex > *{
+    margin: 0px 10%;
+}
+.service-full-card.d-flex .fa-brands,
+.service-full-card.d-flex .fa-solid{
+    font-size: 40px;
+    color: rgb(0, 130, 189);
+}
+.service-full-card.d-flex h3{
+    color:#303030;
+    font-size: 32px;
+    font-weight: 900;
+}
+.default-color{
+    color: rgb(0, 130, 189);
+}
+.service-full-card.d-flex p{
+    color:#303030;
+    margin-top: 20px;
+}
+.hire-line{
+    height: 1px;
+    width: 30px;
+    background-color: rgb(0, 130, 189);
+    margin-top: 10px;
+    margin-right: 5px;
+}
+.c-action{
+    margin-top: 20px !important;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-weight: 700;
+}
+.c-action:hover{
+    color: rgb(0, 130, 189);
+}
+.full-bg{
+    background-image: url(../images/g11.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.with-pattern-bg{
+    margin-top: 10px;
+}
+.with-pattern-bg img{
+    width: 100%;
+}
 
 /*************
 *************

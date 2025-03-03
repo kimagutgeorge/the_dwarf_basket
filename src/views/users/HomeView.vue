@@ -7,7 +7,7 @@
         <div class="text" :class="{ 'animate-text': isTextVisible }">
           <h2>THE DWARF BASKET</h2>
           <p class="fixed-flexed"><span>MAKE A LASTING</span><span class="t-blue">IMPRESSION</span></p>
-          <button class="btn-default">EXPLORE</button>
+          <router-link to="/products"><button class="btn-default">EXPLORE SHOP</button></router-link>
         </div>
         <div class="image-holder-tilted">
           <img src="../../assets/images/man-8892263_1280.png" alt="Slide 2" />
@@ -30,27 +30,7 @@
       <h2 class="main-title">Feature Product</h2>
       <p>Every single product that carries your brand is an opportunity to make a
         lasting impression</p>
-        <div class="flex-container centered-content">
-          <div class="cat-card active-card">
-            All
-          </div>
-          <div class="cat-card">
-            Category Two
-          </div>
-          <div class="cat-card">
-            Category Two
-          </div>
-          <div class="cat-card">
-            Category Two
-          </div>
-          <div class="cat-card">
-            Category Two
-          </div>
-          <div class="cat-card">
-            Category Two
-          </div>
-        </div>
-        <div class="flex-container cats">
+        <div class="flex-container cats f-width">
           <!-- card -->
           <div class="cat-card-holder p-relative">
             <div class="cat-card-holder-img p-absolute">

@@ -10,6 +10,9 @@
           </div>
         </div>
       </div>
+      <div class="f-width with-pattern-bg">
+        <img src="../../assets/images/g16.png">
+      </div>
 </template>
 <script>
 export default {

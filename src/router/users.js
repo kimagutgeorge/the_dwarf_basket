@@ -2,6 +2,9 @@ import AboutView from '@/views/users/AboutView.vue';
 import HomeView from '@/views/users/HomeView.vue';
 import ProductView from '@/views/users/ProductView.vue';
 import ContactView from '@/views/users/ContactView.vue';
+import ServiceView from '@/views/users/ServiceView.vue';
+import SingleProductView from '@/views/users/SingleProductView.vue';
+import EnquireView from '@/views/users/EnquireView.vue';
 export default [
     {
       path: '/',
@@ -26,6 +29,22 @@ export default [
           path: '/contact-us',
           name: 'ContactView',
           component: ContactView
+        },
+        {
+          path: '/services',
+          name: 'ServiceView',
+          component: ServiceView
+        },
+        {
+          path :'/view-service',
+          name: 'SingleProductView',
+          component: SingleProductView
+        },
+        {
+          path :'/enquire/:id',
+          name: 'EnquireView',
+          component: EnquireView,
+          props: true
         }
        
       ],
