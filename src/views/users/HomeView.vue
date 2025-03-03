@@ -3,16 +3,6 @@
   <div class="home-banner slider">
     <!-- Slide Container -->
     <div class="slides" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
-      <!-- Slide 1 -->
-      <!-- <div class="slide">
-        <img src="./../../assets/images/g4.png" alt="Slide 1" />
-        <div class="text" :class="{ 'animate-text': isTextVisible }">
-          <h2>Slide 1 Title</h2>
-          <p>This is the description for slide 1.</p>
-        </div>
-      </div> -->
-
-      <!-- Slide 2 -->
       <div class="slide">
         <div class="text" :class="{ 'animate-text': isTextVisible }">
           <h2>THE DWARF BASKET</h2>
@@ -20,7 +10,7 @@
           <button class="btn-default">EXPLORE</button>
         </div>
         <div class="image-holder-tilted">
-          <img src="../../assets/images/pngwing.com.png" alt="Slide 2" />
+          <img src="../../assets/images/man-8892263_1280.png" alt="Slide 2" />
         </div>
         <!-- moving class -->
          <div class="moving-bg">

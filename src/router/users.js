@@ -1,5 +1,6 @@
 import AboutView from '@/views/users/AboutView.vue';
 import HomeView from '@/views/users/HomeView.vue';
+import ProductView from '@/views/users/ProductView.vue';
 export default [
     {
       path: '/',
@@ -12,9 +13,14 @@ export default [
         },
         { 
             path: '/about-us', 
-            name: 'About',
+            name: 'AboutView',
             component: AboutView
           },
+        {
+          path: '/products',
+          name: 'ProductView',
+          component: ProductView
+        }
        
       ],
     },
