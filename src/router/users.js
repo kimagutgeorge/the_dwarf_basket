@@ -1,6 +1,7 @@
 import AboutView from '@/views/users/AboutView.vue';
 import HomeView from '@/views/users/HomeView.vue';
 import ProductView from '@/views/users/ProductView.vue';
+import ContactView from '@/views/users/ContactView.vue';
 export default [
     {
       path: '/',
@@ -20,6 +21,11 @@ export default [
           path: '/products',
           name: 'ProductView',
           component: ProductView
+        },
+        {
+          path: '/contact-us',
+          name: 'ContactView',
+          component: ContactView
         }
        
       ],

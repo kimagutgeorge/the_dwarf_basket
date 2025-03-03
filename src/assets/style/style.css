@@ -1011,7 +1011,38 @@ img.width-60{
 .shop-page .cat-card-holder .cat-card-holder-front{
     text-align: center;
 }
-
+.f-input-contact.q3-row,
+.f-input-contact.f-width{
+    padding: 10px 10px;
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 3px;
+    margin-top: 10px;
+}
+.f-input-contact.f-width{
+    width: 86%;
+}
+.f-input-contact.q3-row:focus,
+.f-input-contact.f-width:focus{
+    outline: none;
+}
+.half label,
+.f-width label{
+    margin-left:5%;
+    font-weight: bold;
+    color:#303030;
+}
+.half .f-width{
+    margin-left: 2.5%;
+}
+.must{
+    color: red;
+}
+.with-top{
+    margin-bottom: 20px;
+}
+textarea{
+    height: 120px;
+}
 
 
 /*************
