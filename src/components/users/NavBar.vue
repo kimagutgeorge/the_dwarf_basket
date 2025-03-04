@@ -1,9 +1,14 @@
 <template>
     <div class="nav-bar flex-container">
         <div class="left centered-content">
-            <router-link to="/" class="d-flex">
-                <img src="@/assets/logo/g10.png" class="logo-img">
-            </router-link>
+            <div class="logo-side half">
+                <router-link to="/" class="fixed-flexed">
+                    <img src="@/assets/logo/g10.png" class="logo-img">
+                </router-link>
+            </div>
+            <div class="small-nav-bar right-content half" >
+                <i :class="small_navbar ? 'fa-solid fa-close' : 'fa-solid fa-bars'" @click="navOperation"></i>
+            </div>
         </div>
         <div class="centered-content middle centered-content">
             <div class="f-width full-nav-bar">
@@ -14,10 +19,10 @@
                 <router-link to="/contact-us" active-class="btn-active" class="nav-btn">CONTACT US</router-link>
             </div>
             <!-- small navbar -->
-             <div class="f-width small-nav-bar right-content">
+             <!-- <div class="f-width small-nav-bar right-content">
                 <i :class="small_navbar ? 'fa-solid fa-close' : 'fa-solid fa-bars'" @click="navOperation"></i>
 
-             </div>
+             </div> -->
              <div class="f-width small_nav right-content p-absolute" v-if="small_navbar" >
                 <li><router-link to="/" active-class="btn-active" class="nav-btn">HOME</router-link></li>
                 <li><router-link to="/about-us" active-class="btn-active" class="nav-btn">ABOUT</router-link></li>
@@ -53,6 +58,7 @@ export default {
         }
     },
     mounted() {
+        this.small_navbar = false
         document.body.style.overflow = ''
     }
 }

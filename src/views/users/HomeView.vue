@@ -97,7 +97,7 @@
           <!-- end -->
            <div class="f-width centered-content">
             <router-link to="/products">
-              <button class="btn-default with-top-40">EXPORE MORE <i class="fa-solid fa-angle-right"></i></button>
+              <button class="btn-default with-top-40">EXPLORE MORE <i class="fa-solid fa-angle-right"></i></button>
             </router-link>
            </div>
         </div>
@@ -130,10 +130,16 @@
         </div>
       </div>
     </div>
+    <!-- end -->
+    <div class="f-width centered-content">
+      <router-link to="/products">
+        <button class="btn-default with-top-40">EXPLORE MORE <i class="fa-solid fa-angle-right"></i></button>
+      </router-link>
+     </div>
   </div>
   <!-- services -->
    <div class="flex-container home-cat services">
-    <div class="half p-relative">
+    <div class="half p-relative half-to-hide">
       <div class="bg-flower-1 p-absolute"></div>
       <div class="bg-flower-2 p-absolute"></div>
       <div class="service-img p-absolute">
@@ -157,6 +163,7 @@
           </div>
       </div>
     </div>
+    <!-- END -->
    </div>
    <!-- reviews -->
    <div class="flex-container home-cat reviews f-width">
