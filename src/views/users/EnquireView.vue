@@ -5,7 +5,7 @@
      </div>
     <!-- shop -->
     <!-- services -->
-  <div class="flex-container main-about f-width">
+  <div class="flex-container main-about f-width" style="height:fit-content; overflow:visible;">
     <div class="half f-height">
       <div class="review-card">
         <div class="review-card-top fixed-flexed">
@@ -35,6 +35,9 @@
       <div class="f-width with-top" style="margin-left:0%;">
         <label style="margin-left:2.5%;"> Message<span class="must">*</span></label><br>
         <textarea class="f-width f-input-contact"></textarea>
+      </div>
+      <div class="f-width with-top" style="margin-left: 0%;">
+        <button class="btn-default" style="margin-left: 2.5%;">SEND</button>
       </div>
     </div>
    </div>

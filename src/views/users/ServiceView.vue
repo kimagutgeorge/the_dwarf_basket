@@ -58,9 +58,9 @@
           <h2 class="main-title">What We Can Do</h2>
         </div>
         <div class="review-body">
-          <p>At The Dwarf Basket, we help businesses build strong and memorable brands through creative design and strategic marketing. Whether you need a logo, website, social media branding, or product packaging, we craft visuals and messages that connect with your audience.</p>
-
-          <p>Our services also include digital marketing, print advertising, and corporate branding to ensure your brand stands out across all platforms. Whether you're starting fresh or refreshing your identity, we tailor our solutions to bring your vision to life.</p>
+          <p>
+            At Dwarf Basket, we offer a wide range of branding, printing, corporate gifting, and occupational safety solutions tailored to meet your business needs. Our services are designed to enhance brand visibility, improve workplace safety, and provide high-quality promotional products. Whether you need custom designs, large-format prints, or protective gear, we deliver excellence with every product.
+          </p>
           <router-link to="/contact-us"><button class="btn-default" style="margin-left: 0%; margin-top: 40px;">Contact Us</button></router-link>
         </div>
       </div>
@@ -115,10 +115,10 @@
             <img src="../../assets/images/service-12.jpg">
         </div>
         <div class="half service-full-card d-flex">
-            <i class="fa-solid fa-print"></i>
-            <h3> Brand Strategy & <span class="default-color">Identity </span></h3>
+            <i class="fa-solid fa-paint-brush"></i>
+            <h3> Graphic Design & <span class="default-color">Branding </span></h3>
             <p>
-                A strong brand starts with a clear vision. We define your brand’s mission, values, and positioning to create a unique identity that resonates with your audience. Our team develops brand guidelines, including logo design, color schemes, typography, and messaging, ensuring consistency and a lasting impression across all platforms.
+              Our expert designers craft unique brand identities, packaging, and marketing materials that resonate with your audience. Whether you need logos, business cards, or promotional designs, we bring creativity to life with precision.
             </p>
             <div class="d-flex c-action">
                 <div class="fixed-flexed">
@@ -128,10 +128,10 @@
         </div>
         <!-- row -->
         <div class="half service-full-card d-flex right-content">
-            <i class="fa-brands fa-slack"></i>
-            <h3> Logo & Visual <span class="default-color">Identity</span></h3>
+            <i class="fa-solid fa-print"></i>
+            <h3> Large Format & Label Printing <span class="default-color">Logo & Visual </span></h3>
             <p>
-                Your logo is the face of your brand, and we craft custom, memorable designs that reflect your identity. Beyond logos, we provide complete visual identity packages, including business cards, letterheads, and digital assets, ensuring a professional and cohesive brand presence across all touchpoints.
+              From banners and posters to high-quality labels, we offer premium printing solutions for businesses. Our labels include waterproof, metallic, and eco-friendly options, ensuring durability and style for all industries.
             </p>
             <div class="d-flex c-action">
                 <div class="fixed-flexed">
@@ -147,10 +147,10 @@
             <img src="../../assets/images/service-12.jpg">
         </div>
         <div class="half service-full-card d-flex">
-            <i class="fa-solid fa-share-nodes"></i>
-            <h3> Social Media <span class="default-color"> Branding</span></h3>
+            <i class="fa-solid fa-gift"></i>
+            <h3> Corporate Gifts & <span class="default-color"> Promotional Items Social Media </span></h3>
             <p>
-                We help brands establish a strong and consistent presence on social media by designing profile assets, ad creatives, and post templates that align with their identity. Additionally, we develop content strategies and posting schedules to boost engagement and audience growth.
+              Enhance your brand visibility with customized giveaways such as mugs, notebooks, apparel, and tech accessories. We source high-quality promotional products that create a memorable brand experience.
             </p>
             <div class="d-flex c-action">
                 <div class="fixed-flexed">
@@ -158,6 +158,23 @@
                 HIRE US NOW</div>
                 </div>
         </div>
+        <!-- row -->
+        <div class="half service-full-card d-flex right-content">
+          <i class="fa-solid fa-hard-hat"></i>
+          <h3> Occupational Health <span class="default-color">& Safety Solutions </span></h3>
+          <p>
+            We provide top-tier protective gear, including workwear, gloves, helmets, eye protection, and warning signage. Our safety solutions ensure compliance and protection for employees across various industries.
+          </p>
+          <div class="d-flex c-action">
+              <div class="fixed-flexed">
+                  <div class="hire-line"></div> 
+              HIRE US NOW</div>
+              </div>
+      </div>
+      <div class="half service-full-card">
+          <img src="../../assets/images/service-11.jpg">
+      </div>
+      <!-- row -->
 
     </div>
     

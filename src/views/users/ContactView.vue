@@ -5,7 +5,7 @@
      </div>
     <!-- shop -->
     <!-- services -->
-  <div class="flex-container main-about f-width">
+  <div class="flex-container main-about f-width"  style="height:fit-content !important; overflow:visible;">
     <div class="half f-height">
       <div class="review-card with-bg">
         <div class="review-card-top fixed-flexed">
@@ -18,7 +18,7 @@
         </div>
       </div>
     </div>
-    <div class="half services">
+    <div class="half services" >
     <div class="q3-row d-flex">
       <div class="half with-top">
         <label>Your Name <span class="must">*</span></label>
@@ -35,6 +35,9 @@
       <div class="f-width with-top" style="margin-left:0%;">
         <label style="margin-left:2.5%;"> Message<span class="must">*</span></label><br>
         <textarea class="f-width f-input-contact"></textarea>
+      </div>
+      <div class="f-width with-top" style="margin-left: 0%;">
+        <button class="btn-default" style="margin-left: 2.5%;">SEND</button>
       </div>
     </div>
    </div>

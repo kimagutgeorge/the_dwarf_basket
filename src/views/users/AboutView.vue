@@ -12,7 +12,9 @@
           <h2 class="main-title">Learn About Dwarf Basket</h2>
         </div>
         <div class="review-body">
-          <p>Our passion for design with straight speaking strategy to create thoughtful and engaging solutions, ensures we serve our clients – big and small – year after year.</p>
+          <p>
+            At Dwarf Basket, we specialize in crafting high-quality branded merchandise, corporate gifts, and safety solutions to enhance your brand presence. With a commitment to excellence, we design, source, and package customized products that leave a lasting impression. Whether you're looking for promotional giveaways, protective workwear, or premium labels, we tailor our offerings to meet your needs. Our passion for branding and quality ensures that every product we deliver strengthens your identity and connects you with your audience.
+          </p>
         </div>
       </div>
     </div>
@@ -78,9 +80,9 @@
           <h2 class="main-title">Learn About Our Services</h2>
         </div>
         <div class="review-body">
-          <p>At The Dwarf Basket, we help businesses build strong and memorable brands through creative design and strategic marketing. Whether you need a logo, website, social media branding, or product packaging, we craft visuals and messages that connect with your audience.</p>
-
-          <p>Our services also include digital marketing, print advertising, and corporate branding to ensure your brand stands out across all platforms. Whether you're starting fresh or refreshing your identity, we tailor our solutions to bring your vision to life.</p>
+          <p>
+            We offer a wide range of branding, printing, corporate gifting, and occupational safety solutions tailored to meet your business needs. Our services are designed to enhance brand visibility, improve workplace safety, and provide high-quality promotional products. Whether you need custom designs, large-format prints, or protective gear, we deliver excellence with every product.
+          </p>
           <router-link to="/services"><button class="btn-default" style="margin-left: 0%; margin-top: 40px;">Learn More</button></router-link>
         </div>
       </div>
