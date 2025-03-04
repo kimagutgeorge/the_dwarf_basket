@@ -26,6 +26,20 @@ li{
     display: flex;
     width: calc(100% - 60px);
 }
+.small_nav{
+    z-index: 30;
+    width: 100%;
+    background-color:#303030;
+    margin-left: calc(-10% + 2px);
+    height: 100vh;
+}
+.small_nav li{
+    margin-top: 15px;
+    padding:0px 10px;
+}
+.small_nav li a{
+    color: #ffffff;
+}
 
 /* Flex items */
 .flex-item {
@@ -121,7 +135,10 @@ li{
     margin: 0 auto;
     overflow: hidden;
   }
-  
+  .small-nav-bar .fa-solid{
+    font-size: 30px;
+    color:rgb(0, 130, 189);
+  }
   /* Slides Container */
   .slides {
     display: flex;
@@ -141,7 +158,9 @@ li{
     height: auto;
     display: block;
   }
-  
+  .full-nav-bar{
+    display: flex;
+  }
   /* Slide Text */
   .slide .text {
     position: absolute;
@@ -150,7 +169,7 @@ li{
     flex-direction: column;
     justify-content: center;
     z-index: 4;
-    width: 100%;
+    width: 90%;
     height: 100%;
     color: white;
     padding: 10px;
@@ -247,6 +266,9 @@ li{
     transition: 0.2s ease-in-out;
     cursor: pointer;
     font-size: 18px;
+  }
+  .small-nav-bar{
+    display: none;
   }
   .prev:hover,
   .next:hover{
@@ -1069,6 +1091,9 @@ img.width-60{
 .with-top{
     margin-bottom: 20px;
 }
+.with-top-40{
+    margin-top: 40px;
+}
 textarea{
     height: 120px;
 }
@@ -1162,11 +1187,152 @@ textarea{
 /*
 WEBSITE RESIZE
 */
+@media (max-width: 1090px){
+    .cat-card-holder{
+        width: 30%;
+        margin-left: 3.33%;
+
+    }
+    .cats .cat-card-holder:nth-child(8),
+    .cats .cat-card-holder:nth-child(7){
+        display: none;
+    }
+}
+@media (max-width: 1030px){
+    .flex-container.home-cat.reviews{
+
+    }
+    .review-topic .h-card-bg{
+        /* height: 300px;
+        width: 300px; */
+        left: calc(70% - 300px);
+        /* background-color: rgb(26, 112, 240);
+        border-radius: 80px;
+        rotate: 45deg;
+        z-index: 2; */
+    }
+    .review-topic .h-card-bg-1{
+        /* height: 360px;
+        width: 360px; */
+        left: calc(70% - 360px);
+        /* background-color:rgb(41, 106, 244);
+        border-radius: 100px;
+        rotate: 35deg;
+        opacity: 0.8;
+        z-index: 1; */
+    }
+}
+@media (max-width: 900px){
+    .cat-card-holder{
+        width: 46.6%;
+    }
+    .cats .cat-card-holder:nth-child(5),
+    .cats .cat-card-holder:nth-child(6){
+        display: none;
+    }
+    .nav-bar.flex-container{
+        flex-direction: column;
+    }
+    .nav-bar.flex-container .left{
+        margin-bottom: 20px;
+    }
+
+}
+@media (max-width: 810px){
+    .sec{
+        order: -1;
+        height: 500px;
+        text-align: center;
+    }
+    .flex-container.home-cat.reviews.f-width{
+        flex-direction: column;
+    }
+    .flex-container.home-cat.reviews.f-width .half{
+        width: 100%;
+    }
+    
+    .review-topic .h-card-bg{
+        left: calc(60% - 300px);
+    }
+    .review-topic .h-card-bg-1{
+        left: calc(60% - 360px);
+    }
+    .flex-container.home-cat.reviews.f-width .half .review-card{
+        width: 80%;
+        margin-left: 5%;
+    }
+    .flex-container.home-cat.reviews.f-width .half .review-pagination{
+        margin-left: 5%;
+    }
+}
+@media (max-width: 800px){
+    .home-cat{
+        width: 100%;
+        margin-left: 0px;
+    }
+    .review-topic .h-card-bg{
+        left: calc(62% - 300px);
+    }
+    .review-topic .h-card-bg-1{
+        left: calc(62% - 360px);
+    }
+}
+@media (max-width: 530px){
+    .review-topic .h-card-bg{
+        left: calc(70% - 300px);
+    }
+    .review-topic .h-card-bg-1{
+        left: calc(70% - 360px);
+    }
+    .review-topic.h-card{
+        width: 80%;
+    }
+}
+@media (max-width: 500px){
+    .review-topic .h-card-bg{
+        width: 90%;
+        left: 5%;
+    }
+    .review-topic .h-card-bg-1{
+        width: 95%;
+        left: 2.5%;
+    }
+}
+@media (max-width: 650px){
+    
+}
 @media (max-width: 600px) {
     .flex-container {
-        flex-direction: column; /* Stack items vertically */
+        flex-direction: column;
+    }
+    .flex-container.cats{
+        flex-direction: row;
+    }
+    .cats .cat-card-holder{
+        height: 30vh;
     }
     .left, .middle, .right {
         flex: 1 1 100%; /* Each item takes full width */
+    }
+}
+@media (max-width: 570px){
+    .full-nav-bar{
+        display: none;
+    }
+    .small-nav-bar{
+        display: block;
+    }
+}
+@media (max-width: 500px){
+    .flex-container.cats{
+        flex-direction: column;
+    }
+    .cats .cat-card-holder{
+        height: 43vh;
+        width: 96.6%;
+    }
+    .cats .cat-card-holder:nth-child(3),
+    .cats .cat-card-holder:nth-child(4){
+        display: none;
     }
 }

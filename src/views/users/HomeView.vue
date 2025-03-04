@@ -95,6 +95,11 @@
             </div>
           </div>
           <!-- end -->
+           <div class="f-width centered-content">
+            <router-link to="/products">
+              <button class="btn-default with-top-40">EXPORE MORE <i class="fa-solid fa-angle-right"></i></button>
+            </router-link>
+           </div>
         </div>
     </div>
   </div>
@@ -116,11 +121,11 @@
       </div>
       <div class="half">
         <div class="f-width side-2 image-container">
-          <div class="cat-text">Business Cards</div>
+          <div class="cat-text">Cooperate Gifts</div>
           <div class="shading-overlay"></div>
         </div>
         <div class="f-width side-2 image-container">
-          <div class="cat-text">Business Cards</div>
+          <div class="cat-text">Graphic Design</div>
           <div class="shading-overlay"></div>
         </div>
       </div>
@@ -176,7 +181,7 @@
         <button class="paginate-btn"><i class="fa-solid fa-angle-right"></i></button>
       </div>
     </div>
-    <div class="half">
+    <div class="half sec">
       <div class="review-topic h-card">
           <div class="h-card-bg p-absolute">
             <div class="h-card-inner-text">
