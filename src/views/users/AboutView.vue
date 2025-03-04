@@ -1,6 +1,9 @@
 <template>
   <NavBar/>
-  <PageBanner title="About Us" text="About" />
+  <!-- <PageBanner title="About Us" text="About" /> -->
+   <div class="about-banner">
+    <HomeBanner title="About Us" text="| About" home="Home "/>
+   </div>
   <!-- below about -->
    <div class="flex-container main-about f-width">
     <div class="half f-height">
@@ -136,10 +139,11 @@
 import NavBar from '@/components/users/NavBar.vue';
 import ClientFooter from '@/components/users/ClientFooter.vue';
 import ClientStats from '@/components/users/ClientStats.vue';
-import PageBanner from '@/components/users/PageBanner.vue';
+// import PageBanner from '@/components/users/PageBanner.vue';
+import HomeBanner from '@/components/users/HomeBanner.vue';
 
 export default {
 name: 'HomeView',
-components: { NavBar, ClientFooter, ClientStats, PageBanner }
+components: { NavBar, ClientFooter, ClientStats, /* PageBanner,*/ HomeBanner }
 }
 </script>

@@ -48,6 +48,37 @@ li{
 .centered-content{
     text-align: center;
 }
+.front-text{
+    z-index: 5;
+    height: 40vh;
+    margin-top: -90vh;
+}
+.front-text-inner{
+    display: flex;
+    flex-direction: row;
+    width: 85%;
+    margin-left: 10.5%;
+}
+.front-text-inner-inner{
+    flex-direction: column;
+}
+.front-text-inner-inner h4{
+    background-color: rgb(0, 130, 189);
+    padding:5px 10px;
+    color:#ffffff;
+}
+.front-text-inner-inner span{
+    margin-top: 6px;
+    margin-left: 10px;
+}
+.front-text-inner-inner span a{
+    font-size: 18px;
+    font-weight: bold;
+    color:#EBA121;
+}
+.center-justified-content{
+    justify-content: center;
+}
 .d-flex{
     display: flex;
     flex-wrap: wrap;
@@ -830,9 +861,7 @@ li{
 }
 .about-banner{
     height: 40vh;
-    background-image: url(../logo/planner-4233907_1280.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
+    overflow-y: hidden;
 }
 .f-height{
     height: 100%;
@@ -1121,6 +1150,7 @@ textarea{
 .with-pattern-bg img{
     width: 100%;
 }
+
 
 /*************
 *************

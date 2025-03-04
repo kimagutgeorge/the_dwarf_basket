@@ -1,6 +1,8 @@
 <template>
     <NavBar/>
-    <PageBanner title="Our Services" text="Services" />
+    <div class="about-banner">
+      <HomeBanner title="Services" text="| Services" home="Home "/>
+     </div>
     <!-- shop -->
     <div class="flex-container home-cat">
         <div class="q3-row centered-content">
@@ -166,10 +168,11 @@
     <script>
     import NavBar from '@/components/users/NavBar.vue';
     import ClientFooter from '@/components/users/ClientFooter.vue';
-    import PageBanner from '@/components/users/PageBanner.vue';
+    // import PageBanner from '@/components/users/PageBanner.vue';
+    import HomeBanner from '@/components/users/HomeBanner.vue';
     
     export default {
     name: 'ServiceView',
-    components: { NavBar, ClientFooter, PageBanner }
+    components: { NavBar, ClientFooter, HomeBanner }
     }
     </script>

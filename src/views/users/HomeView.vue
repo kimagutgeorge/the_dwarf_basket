@@ -1,30 +1,6 @@
 <template>
   <NavBar/>
-  <div class="home-banner slider">
-    <!-- Slide Container -->
-    <div class="slides" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
-      <div class="slide">
-        <div class="text" :class="{ 'animate-text': isTextVisible }">
-          <h2>THE DWARF BASKET</h2>
-          <p class="fixed-flexed"><span>MAKE A LASTING</span><span class="t-blue">IMPRESSION</span></p>
-          <router-link to="/products"><button class="btn-default">EXPLORE SHOP</button></router-link>
-        </div>
-        <div class="image-holder-tilted">
-          <img src="../../assets/images/man-8892263_1280.png" alt="Slide 2" />
-        </div>
-        <!-- moving class -->
-         <div class="moving-bg">
-          <div class="moving-bg-inner">
-            <div class="small-card-1 random-movement"></div>
-            <div class="small-card-2 random-movement-2"></div>
-            <div class="small-card-3 random-movement-3"></div>
-            <div class="small-card-4 random-movement-4"></div>
-          </div>
-         </div>
-      </div>
-
-    </div>
-  </div>
+  <HomeBanner/>
   <div class="flex-container home-cat">
     <div class="q3-row centered-content">
       <h2 class="main-title">Feature Product</h2>
@@ -223,28 +199,10 @@
 import NavBar from '@/components/users/NavBar.vue';
 import ClientFooter from '@/components/users/ClientFooter.vue';
 import ClientStats from '@/components/users/ClientStats.vue';
+import HomeBanner from '@/components/users/HomeBanner.vue';
 
 export default {
 name: 'HomeView',
-components: { NavBar, ClientFooter, ClientStats },
-data() {
-  return {
-      currentIndex: 0, // Tracks the current slide index
-      isTextVisible: false, // Controls text animation
-    };
-},
-methods: {
-    // Trigger text animation
-    triggerTextAnimation() {
-      this.isTextVisible = false;
-      setTimeout(() => {
-        this.isTextVisible = true;
-      }, 50); // Small delay to reset the animation
-    },
-  },
-  mounted() {
-    // Trigger text animation on initial load
-    this.triggerTextAnimation();
-  },
+components: { NavBar, ClientFooter, ClientStats, HomeBanner },
 }
 </script>

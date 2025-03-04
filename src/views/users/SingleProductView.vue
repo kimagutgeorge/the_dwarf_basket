@@ -1,6 +1,8 @@
 <template>
     <NavBar/>
-    <PageBanner title="Service" text="Service" />
+    <div class="about-banner">
+        <HomeBanner title="Service" text="| Product" home="Home "/>
+       </div>
     <!-- shop -->
    <!-- all services -->
    <div class="flex-container main-about f-width d-flex" style="height:fit-content;">
@@ -28,10 +30,10 @@
     <script>
     import NavBar from '@/components/users/NavBar.vue';
     import ClientFooter from '@/components/users/ClientFooter.vue';
-    import PageBanner from '@/components/users/PageBanner.vue';
+    import HomeBanner from '@/components/users/HomeBanner.vue';
     
     export default {
     name: 'SingleProductView',
-    components: { NavBar, ClientFooter, PageBanner }
+    components: { NavBar, ClientFooter, HomeBanner }
     }
     </script>

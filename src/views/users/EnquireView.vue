@@ -1,6 +1,8 @@
 <template>
     <NavBar/>
-    <PageBanner title="Enquire" text="Enquire" />
+    <div class="about-banner">
+      <HomeBanner title="Contact Us" text="| Enquire" home="Home "/>
+     </div>
     <!-- shop -->
     <!-- services -->
   <div class="flex-container main-about f-width">
@@ -43,11 +45,11 @@
     <script>
     import NavBar from '@/components/users/NavBar.vue';
     import ClientFooter from '@/components/users/ClientFooter.vue';
-    import PageBanner from '@/components/users/PageBanner.vue';
+    import HomeBanner from '@/components/users/HomeBanner.vue';
     
     export default {
     name: 'EnquireView',
     props: ['id'],
-    components: { NavBar, ClientFooter, PageBanner }
+    components: { NavBar, ClientFooter, HomeBanner }
     }
     </script>

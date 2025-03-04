@@ -1,6 +1,8 @@
 <template>
 <NavBar/>
-<PageBanner title="Products" text="Products" />
+<div class="about-banner">
+  <HomeBanner title="Product" text="| Product" home="Home "/>
+ </div>
 <!-- shop -->
 <div class="flex-container products q3-row">
     <div class="width-30">
@@ -94,10 +96,10 @@
 <script>
 import NavBar from '@/components/users/NavBar.vue';
 import ClientFooter from '@/components/users/ClientFooter.vue';
-import PageBanner from '@/components/users/PageBanner.vue';
+import HomeBanner from '@/components/users/HomeBanner.vue';
 
 export default {
 name: 'ProductView',
-components: { NavBar, ClientFooter, PageBanner }
+components: { NavBar, ClientFooter, HomeBanner }
 }
 </script>
