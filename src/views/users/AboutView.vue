@@ -5,7 +5,7 @@
     <HomeBanner title="About Us" text="| About" home="Home "/>
    </div>
   <!-- below about -->
-   <div class="flex-container main-about f-width">
+   <div class="flex-container main-about top-about f-width" style="height: fit-content; overflow:visible;">
     <div class="half f-height">
       <div class="review-card">
         <div class="review-card-top fixed-flexed">
@@ -73,7 +73,7 @@
     </div>
   </div>
   <!-- services -->
-  <div class="flex-container main-about f-width" style="height:fit-content;">
+  <div class="flex-container main-about f-width" style="height:fit-content; overflow:visible;">
     <div class="half f-height">
       <div class="review-card">
         <div class="review-card-top fixed-flexed">
