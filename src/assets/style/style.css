@@ -19,7 +19,7 @@ li{
 }
 p{
     padding: 10px;
-    width: calc(100% - 20px) !important;
+    width: calc(100% - 20px);
 }
 .nav-bar{
     padding:30px;
@@ -73,7 +73,7 @@ p{
 .front-text{
     z-index: 5;
     height: 40vh;
-    margin-top: -90vh;
+    /* margin-top: -90vh; */
 }
 .front-text-inner{
     display: flex;
@@ -339,6 +339,10 @@ p{
     width: calc(90% - 60px);
     padding: 30px;
     margin-left: 5%;
+}
+.serv .f-width.about-cards .card.width-q4.d-flex{
+    margin-left: 5%;
+    width: 33.3%;
 }
 .width-75{
     width: 80%;
@@ -952,7 +956,7 @@ p{
     box-shadow: none;
 }
 .card{
-    border: 1px solid rgb(230, 230, 230);
+    /* border: 1px solid rgb(230, 230, 230); */
     border-radius: 5px;
     padding:50px 20px;
     height: fit-content;
@@ -989,14 +993,9 @@ p{
 img.width-60{
     margin-top: 10vh;
 }
-.card:hover{
-    /* box-shadow: 0 0 15px #333; */
-    border-color: transparent;
-    background-color: rgb(0, 130, 189);
-}
-.card:hover .card-title .fa-solid{
-    color: #ffffff;
-}
+/* .card:hover .card-title .fa-solid{
+    /* color: #ffffff; *
+} */
 .services .q3-row .service-card.half{
     min-width: 200px;
 }
@@ -1076,7 +1075,7 @@ img.width-60{
 }
 .f-input-contact.q3-row,
 .f-input-contact.f-width{
-    padding: 7px 10px;
+    padding: 10px 10px;
     border: 1px solid rgb(200, 200, 200);
     border-radius: 3px;
     margin-top: 10px;
@@ -1113,7 +1112,7 @@ textarea{
     width: 150px;
     height: 150px;
     background-color: transparent;
-    border: 15px solid rgb(0, 130, 189);
+    /* border: 15px solid rgb(0, 130, 189); */
     border-radius: 50%;
     margin-bottom: 20px;
 }
@@ -1139,6 +1138,10 @@ textarea{
 }
 .service-full-card.d-flex > *{
     margin: 0px 10%;
+}
+.service-full-card.d-flex.right-content > *{
+    margin: 5% 0px;
+    width: 90%;
 }
 .service-full-card.d-flex .fa-brands,
 .service-full-card.d-flex .fa-solid{
@@ -1249,6 +1252,20 @@ WEBSITE RESIZE
     .service-description .flex-container .half{
         width: 100%;
     }
+    .flex-container.main-about.f-width.serv-break{
+        flex-direction: column;
+    }
+    .flex-container.main-about.f-width.serv-break .half{
+        width: 100%;
+    }
+    .flex-container.main-about.f-width.serv-break .half:first-child .review-card{
+        /* text-align: center; */
+        width: 85%;
+        margin-left: 5%;
+    }
+    .flex-container.main-about.f-width.serv-break .half:last-child .half{
+        width: 25%;
+    }
 }
 @media (max-width: 900px){
     .cat-card-holder{
@@ -1276,6 +1293,10 @@ WEBSITE RESIZE
 
 }
 @media (max-width: 880px){
+    .flex-container.home-serv{
+        width: 100%;
+        margin-left: 0%;
+    }
     .top-about.flex-container.main-about.f-width .half:first-child{
         width: 100%;
     }
@@ -1300,6 +1321,18 @@ WEBSITE RESIZE
         width: 85%;
         margin-left: 5%;
     }
+    .serv .f-width.about-cards .card.width-q4.d-flex{
+        width: 100%;
+    }
+    .flex-container.main-about.f-width.serv-break .half:last-child .half{
+        width: 50%;
+    }
+    .flex-container.main-about.f-width.serv-break .half:last-child .half .round-card{
+        border-radius: 0px;
+        width:90%;
+        margin-left: 5%;
+        border:0px;
+    }
 }
 @media (max-width: 850px){
     .flex-container.main-about.f-width{
@@ -1320,6 +1353,15 @@ WEBSITE RESIZE
     .flex-container.main-about.f-width .q3-row.d-flex .width-q{
         width: fit-content;
         margin-right: 20px;
+    }
+    .service-full-card.right-content{
+        text-align: left;
+    }
+    
+    .service-full-card.d-flex > *,
+    .service-full-card.d-flex.right-content > *{
+        margin: 5% 0px;
+        width: 90%;
     }
 }
 @media (max-width: 810px){
@@ -1411,6 +1453,11 @@ WEBSITE RESIZE
 @media (max-width: 490px){
     .flex-container.home-cat.reviews.f-width .half .review-card{
         width: 75%;
+    }
+}
+@media (max-width: 445px){
+    .flex-container.main-about.f-width.serv-break .half:last-child .half{
+        width: 100%;
     }
 }
 @media (max-width: 365px){

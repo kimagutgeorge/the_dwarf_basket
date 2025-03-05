@@ -4,8 +4,8 @@
       <HomeBanner title="Services" text="| Services" home="Home "/>
      </div>
     <!-- shop -->
-    <div class="flex-container home-cat">
-        <div class="q3-row centered-content">
+    <div class="flex-container home-serv">
+        <div class="f-width  about-cards centered-content">
           <h2 class="main-title">Our Process</h2>
           <p>Our process is designed to deliver seamless and effective solutions, from initial consultation to final execution. We ensure every step is clear, strategic, and tailored to meet your needs.</p>
             <div class="flex-container centered-content about-cards">
@@ -51,7 +51,7 @@
         </div>
     </div>
     <!-- services -->
-  <div class="flex-container main-about f-width" style="height:fit-content;">
+  <div class="flex-container main-about f-width serv-break" style="height:fit-content;">
     <div class="half f-height">
       <div class="review-card">
         <div class="review-card-top fixed-flexed">

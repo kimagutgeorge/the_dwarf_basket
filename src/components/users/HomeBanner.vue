@@ -13,6 +13,15 @@
             </div>
             <!-- moving class -->
              <div class="moving-bg">
+
+              <!-- <div class="front-text f-width">
+                <div class="front-text-inner d-flex f-height">
+                  <div class="front-text-inner-inner f-wdith d-flex center-justified-content">
+                      <div class="fixed-flexed"><h4>{{ title }} </h4> <span><router-link to="/">{{ home }}</router-link> {{ text }}</span></div>
+                  </div>
+              </div>
+              </div> -->
+
               <div class="moving-bg-inner">
                 <div class="small-card-1 random-movement"></div>
                 <div class="small-card-2 random-movement-2"></div>
@@ -21,13 +30,14 @@
               </div>
              </div>
              <!-- page text -->
-              <div class="front-text p-absolute f-width">
+              <!-- <div class="front-text p-absolute f-width">
                 <div class="front-text-inner d-flex f-height">
                     <div class="front-text-inner-inner f-wdith d-flex center-justified-content">
                         <div class="fixed-flexed"><h4>{{ title }} </h4> <span><router-link to="/">{{ home }}</router-link> {{ text }}</span></div>
                     </div>
                 </div>
-              </div>
+              </div> -->
+              <!-- end of it -->
           </div>
     
         </div>
