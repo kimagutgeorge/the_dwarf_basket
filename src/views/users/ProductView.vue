@@ -8,22 +8,18 @@
     <div class="width-30">
         <div class="search-box fixed-flexed f-90">
             <button class="btn-search"><i class="fa-solid fa-search"></i></button>
-            <input type="text" class="f-input" placeholder="Search Product">
+            <input type="text" class="f-input" placeholder="Search...">
         </div>
         <div class="f-width product-cats">
             <h4>SERVICES CATEGORIES</h4>
             <div class="the-stats">
-                <li><router-link to="/products/category-one" active-class="active-cat">Design online</router-link></li>
-                <li><router-link to="/products" active-class="active-cat">Design online</router-link></li>
-                <li><router-link to="/products" active-class="active-cat">Design online</router-link></li>
-                <li><router-link to="/products" active-class="active-cat">Design online</router-link></li>
-                <li><router-link to="/products" active-class="active-cat">Design online</router-link></li>
-                <li><router-link to="/products" active-class="active-cat">Design online</router-link></li>
-                <li><router-link to="/products" active-class="active-cat">Design online</router-link></li>
-                <li><router-link to="/products" active-class="active-cat">Design online</router-link></li>
-                <li><router-link to="/products" active-class="active-cat">Design online</router-link></li>
-                <li><router-link to="/products" active-class="active-cat">Design online</router-link></li>
-                
+              <select name="" id="" class="f-input-contact f-width">
+                <option value="">Office Stationary</option>
+                <option value="">Indoor Printing</option>
+                <option value="">Outdoor Printing</option>
+                <option value="">Office Stationary</option>
+                <option value="">Drink-ware</option>
+              </select>
             </div>
         </div>
     </div>
@@ -88,6 +84,15 @@
               <p>ENQUIRE <i class="fa-solid fa-paper-plane"></i></p>
             </div>
           </div>
+      <div class="f-width shop-pagination">
+        <div class="shop-btn fixed-flexed">
+          <button class="btn-default"><i class="fa-solid fa-angle-left"></i></button>
+        <button class="btn-default page-is-active">1</button>
+        <button class="btn-default">2</button>
+        <button class="btn-default"><i class="fa-solid fa-angle-right"></i></button>
+        </div>
+        
+      </div>
     </div>
 </div>
 <ClientFooter/>

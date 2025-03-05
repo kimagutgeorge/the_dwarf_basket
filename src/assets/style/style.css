@@ -8,6 +8,9 @@ body{
     background-color: #ffffff;
     overflow-x: hidden;
 }
+body .home-wrapper{
+    overflow-x: hidden;
+}
 a{
     text-decoration: none;
 }
@@ -409,6 +412,7 @@ p{
     top: 80%;
     display: none;
     transition: 0.3s ease-in-out;
+    justify-content: center;
 }
 .cat-card-holder:hover > .cat-card-holder-bg{
     opacity: 0.5;
@@ -416,11 +420,23 @@ p{
 .cat-card-holder:hover > .cat-card-holder-front{
     display: block;
 }
-.cat-card-holder-front p{
-    margin-top: 10px;
-}
+
 .p-relative{
     position: relative;
+}
+.shop-pagination{
+    text-align: right;
+}
+.shop-pagination .btn-default{
+    border-radius: 0px;
+    padding: 5px 15px;
+    margin:0px;
+    border:1px solid transparent;
+}
+.shop-pagination .btn-default.page-is-active{
+    background-color: transparent;
+    color: rgb(0, 130, 189);
+    border:1px solid rgb(0, 130, 189);
 }
 .p-absolute{
     position: absolute;
@@ -1011,13 +1027,13 @@ img.width-60{
     margin-bottom: 10px;
 }
 .search-box{
-    border: 1px solid rgb(230, 230, 230);
     border-radius: 5px;
     padding: 10px;
 }
 .f-input{
     padding: 7px;
     border: 0px;
+    border-bottom: 1px solid rgb(200, 200, 200);
     width: calc( 80% - 14px);
     margin-left: 5%;
 }
@@ -1044,32 +1060,14 @@ img.width-60{
 }
 .the-stats{
     margin-top: 20px;
-    height: 60vh;
-    overflow-y: scroll;
+    height:fit-content;
+    margin-bottom: 20px;
 }
-.the-stats::-webkit-scrollbar{
-    width: 7px;
-    border-radius: 5px;
+.the-stats .f-input-contact.f-width{
+    padding: 10px 10px;
+    background-color: transparent;
 }
-.the-stats::-webkit-scrollbar-thumb{
-    background-color: rgb(200, 200, 200);
-}
-.the-stats li{
-    cursor: pointer;
-    width: fit-content;
-    list-style: circle;
-    transition: 0.2s ease-in-out;
-    margin-bottom: 15px;
-}
-.the-stats li:hover{
-    color: rgb(0, 130, 189);
-}
-.the-stats li a{
-    color:#303030;
-}
-.products{
-    margin-top: 20px;
-}
+
 .active-cat{
     color: rgb(0, 130, 189);
 }
@@ -1406,6 +1404,9 @@ WEBSITE RESIZE
     .flex-container.home-cat.reviews.f-width .half .review-card{
         width: 80%;
     }
+    .width-70.d-flex.shop-page .cat-card-holder{
+        width: 100%;
+    }
 }
 @media (max-width: 490px){
     .flex-container.home-cat.reviews.f-width .half .review-card{
@@ -1425,6 +1426,9 @@ WEBSITE RESIZE
     }
 }
 @media (max-width: 600px) {
+    .search-box.fixed-flexed.f-90{
+        width: 95.5%;
+    }
     .flex-container.home-cat.services .half .service-description .flex-container{
         flex-direction: row;
     }
@@ -1471,6 +1475,13 @@ WEBSITE RESIZE
     .flex-container.home-cat.footer.f-width .col-20{
         width: 100%;
     }
+    .flex-container.products.q3-row .width-30,
+    .flex-container.products.q3-row .width-70{
+        width: 100%;
+    }
+    .flex-container.products.q3-row .width-30 .f-input-contact.f-width{
+        width: 100%;
+    }
 }
 @media (max-width: 570px){
     .full-nav-bar{
@@ -1513,9 +1524,9 @@ WEBSITE RESIZE
     .small-card-3{
         display: none;
     }
-}
-@media (max-width: 430px){
-    /* this is it */
+    .slide .text p.fixed-flexed{
+        flex-wrap: wrap;
+    }
 }
 @media (max-width: 375px){
     .flex-container.home-cat.services .half .service-description .flex-container{
