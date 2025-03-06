@@ -1,4 +1,5 @@
 <template>
+  <UserResponse v-if="responseClass.includes('displayed')" :class="['response-message', responseClass]" :dbResponse="dbResponse" @close="closeResponse" />
     <NavBar/>
     <div class="about-banner">
       <HomeBanner title="Services" text="| Services" home="Home "/>
@@ -111,70 +112,34 @@
    <div class="flex-container main-about f-width d-flex" style="height:fit-content;">
     <div class="q3-row d-flex">
         <!-- row -->
-        <div class="half service-full-card">
-            <img src="../../assets/images/service-12.jpg">
-        </div>
-        <div class="half service-full-card d-flex">
-            <i class="fa-solid fa-paint-brush"></i>
-            <h3> Graphic Design & <span class="default-color">Branding </span></h3>
+        <div class="full-service-row f-width d-flex" v-for="(service, index) in services" :key="index">
+          <!-- Text Content -->
+          <div
+            class="half service-full-card d-flex"
+            :class="{ 'order-2': service.rightContent, 'right-content': !service.rightContent }"
+          >
+            <i :class="service.service_icon"></i>
+            <h3>{{ service.service_title }}</h3>
             <p>
-              Our expert designers craft unique brand identities, packaging, and marketing materials that resonate with your audience. Whether you need logos, business cards, or promotional designs, we bring creativity to life with precision.
+              {{ service.service_description }}
             </p>
             <div class="d-flex c-action">
-                <div class="fixed-flexed">
-                    <div class="hire-line"></div> 
-                HIRE US NOW</div>
-                </div>
-        </div>
-        <!-- row -->
-        <div class="half service-full-card d-flex right-content">
-            <i class="fa-solid fa-print"></i>
-            <h3> Large Format & Label Printing <span class="default-color">Logo & Visual </span></h3>
-            <p>
-              From banners and posters to high-quality labels, we offer premium printing solutions for businesses. Our labels include waterproof, metallic, and eco-friendly options, ensuring durability and style for all industries.
-            </p>
-            <div class="d-flex c-action">
-                <div class="fixed-flexed">
-                    <div class="hire-line"></div> 
-                HIRE US NOW</div>
-                </div>
-        </div>
-        <div class="half service-full-card">
-            <img src="../../assets/images/service-11.jpg">
-        </div>
-        <!-- row -->
-        <div class="half service-full-card">
-            <img src="../../assets/images/service-12.jpg">
-        </div>
-        <div class="half service-full-card d-flex">
-            <i class="fa-solid fa-gift"></i>
-            <h3> Corporate Gifts & <span class="default-color"> Promotional Items Social Media </span></h3>
-            <p>
-              Enhance your brand visibility with customized giveaways such as mugs, notebooks, apparel, and tech accessories. We source high-quality promotional products that create a memorable brand experience.
-            </p>
-            <div class="d-flex c-action">
-                <div class="fixed-flexed">
-                    <div class="hire-line"></div> 
-                HIRE US NOW</div>
-                </div>
-        </div>
-        <!-- row -->
-        <div class="half service-full-card d-flex right-content">
-          <i class="fa-solid fa-hard-hat"></i>
-          <h3> Occupational Health <span class="default-color">& Safety Solutions </span></h3>
-          <p>
-            We provide top-tier protective gear, including workwear, gloves, helmets, eye protection, and warning signage. Our safety solutions ensure compliance and protection for employees across various industries.
-          </p>
-          <div class="d-flex c-action">
               <div class="fixed-flexed">
-                  <div class="hire-line"></div> 
-              HIRE US NOW</div>
+                <div class="hire-line"></div>
+                <router-link to="/contact-us" style="color: rgb(0, 130, 189)">HIRE US NOW</router-link>
               </div>
-      </div>
-      <div class="half service-full-card">
-          <img src="../../assets/images/service-11.jpg">
-      </div>
-      <!-- row -->
+            </div>
+          </div>
+      
+          <!-- Image -->
+          <div
+            class="half service-full-card"
+            :class="{ 'order-1': service.rightContent, 'right-content': !service.rightContent }"
+          >
+            <img :src="service.imageUrl" />
+          </div>
+        </div>
+        <!-- row -->
 
     </div>
     
@@ -185,11 +150,72 @@
     <script>
     import NavBar from '@/components/users/NavBar.vue';
     import ClientFooter from '@/components/users/ClientFooter.vue';
-    // import PageBanner from '@/components/users/PageBanner.vue';
     import HomeBanner from '@/components/users/HomeBanner.vue';
+    import UserResponse from '@/components/users/UserResponse.vue';
     
     export default {
     name: 'ServiceView',
-    components: { NavBar, ClientFooter, HomeBanner }
+    components: { NavBar, ClientFooter, HomeBanner, UserResponse },
+    data(){
+      return{
+        responseClass: '',
+        dbResponse: '',
+        services: []
+      }
+    },
+    methods: {
+      async getServices() {
+      try {
+        // Fetch services from the 'services' table
+        const { data, error } = await this.$supabase
+          .from("services")
+          .select("*")
+          .order("created_at", { ascending: false });
+
+        // Handle errors
+        if (error) {
+          this.responseClass = "my-red displayed";
+          this.dbResponse = "Failed to fetch services. Please try again.";
+          
+          return;
+        }
+        this.services = await Promise.all(
+        data.map(async (service, index) => {
+          const { data: imageData } = await this.$supabase
+            .storage
+            .from("The Dwaf Basket") 
+            .getPublicUrl(`services/${service.service_image}`); 
+
+          const rightContent = index % 2 === 1; 
+
+          return {
+            ...service,
+            imageUrl: imageData.publicUrl,
+            rightContent,
+          };
+        })
+    );
+
+      } catch (error) {
+        // Handle unexpected errors
+        this.responseClass = "my-red displayed";
+        this.dbResponse = "Server offline. Please try again later.";
+        // console.error("Unexpected error:", error);
+      }
+    }
+    },
+    mounted(){
+      this.getServices();
+    }
     }
     </script>
+    <style scoped>
+    .order-1 {
+      order: 1; /* Display first */
+      text-align: right;
+    }
+    
+    .order-2 {
+      order: 2; /* Display second */
+    }
+    </style>

@@ -13,9 +13,11 @@
             <div class="cat-card-holder-img p-absolute">
               <img :src="product.imageUrl" alt="Product Not Found">
             </div>
-            <div class="cat-card-holder-bg p-absolute"></div>
+            <RouterLink :to="{ name: 'Product Details', params: { product_name: product.product_name }}" :key="$route.fullPath"> 
+              <div class="cat-card-holder-bg p-absolute"></div>
+            </RouterLink>
             <div class="cat-card-holder-front p-absolute">
-            <RouterLink :to="{ name: 'Product Details', params: { id: product.id }}" :key="$route.fullPath"> 
+            <RouterLink :to="{ name: 'Product Details', params: { product_name: product.product_name }}" :key="$route.fullPath"> 
               <p>ENQUIRE <i class="fa-solid fa-paper-plane"></i></p>
             </RouterLink>
             </div>

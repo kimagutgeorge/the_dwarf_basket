@@ -42,10 +42,7 @@
       <div class="col-body">
         <h4>Categories</h4>
         <div class="col-body-link">
-          <li class="touch">Tags</li>
-          <li class="touch">ThermoRoll Labels</li>
-          <li class="touch">Sustainable Labels</li>
-          <li class="touch">Office Stationary</li>
+          <li class="touch" v-for="(category, index) in categories.slice(0, 6) " :key="index">{{ category.category_name }}</li>
         </div>
       </div>
    </div>
@@ -69,6 +66,7 @@ export default {
     data() {
     return {
       showButton: false, // Controls visibility of the button
+      categories: []
     };
   },
   methods: {
@@ -83,8 +81,27 @@ export default {
     handleScroll() {
       this.showButton = window.scrollY > 200; // Show button after scrolling 200px
     },
+    async getCategories() {
+        try {
+            const { data, error } = await this.$supabase
+                .from("categories")
+                .select("*")
+                .order("created_at", { ascending: false });
+
+            if (error) {
+                this.responseClass = 'my-red displayed';
+                this.dbResponse = 'Failed to fetch categories. Please try again.';
+            } else {
+                this.categories = data;
+            }
+        } catch (error) {
+            this.responseClass = 'my-red displayed';
+            this.dbResponse = 'Server Offline. Please try again later.';
+        }
+    },
   },
   mounted() {
+    this.getCategories();
     // Add scroll event listener when the component is mounted
     window.addEventListener("scroll", this.handleScroll);
   },

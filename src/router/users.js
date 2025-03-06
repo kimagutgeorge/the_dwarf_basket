@@ -37,13 +37,14 @@ export default [
           component: ServiceView
         },
         {
-          path :'/view-service',
-          name: 'SingleProductView',
-          component: SingleProductView
+          path :'/view-service/:product_name',
+          name: 'Product Details',
+          component: SingleProductView,
+          props: true
         },
         {
           path :'/enquire/:id',
-          name: 'Product Details',
+          name: 'Product Enquiry',
           component: EnquireView,
           props: true
         }

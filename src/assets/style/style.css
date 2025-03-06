@@ -23,21 +23,29 @@ p{
 }
 /* response classs */
 .response{
-    position:absolute;
-    padding:10px 10px;
-    border-radius: 10px;
+    position:fixed;
+    padding:5px 10px;
     font-size: 14px;
-    width: calc(96% - 20px);
-    left:2%;
-    top:10px;
+    width: 100%;
     z-index: 100;
     display: none;
 }
+.response .col-90{
+    width: 88%;
+    text-align: center;
+}
+.response .col-10{
+    width: 10%;
+    text-align:right;
+}
 .response .fa-solid{
     font-size: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    float: right;
 }
 .my-red{
-    background-color: #9f080f;
+    background-color: #AC3A26;
     color: #ffffff;
 }
 .my-success{
