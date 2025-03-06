@@ -1,4 +1,5 @@
 <template>
+<UserResponse v-if="responseClass.includes('displayed')" :class="['response-message', responseClass]" :dbResponse="dbResponse" @close="closeResponse" />
 <NavBar/>
 <div class="about-banner">
   <HomeBanner title="Product" text="| Product" home="Home "/>
@@ -13,77 +14,28 @@
         <div class="f-width product-cats">
             <h4>SERVICES CATEGORIES</h4>
             <div class="the-stats">
-              <select name="" id="" class="f-input-contact f-width">
-                <option value="">Office Stationary</option>
-                <option value="">Indoor Printing</option>
-                <option value="">Outdoor Printing</option>
-                <option value="">Office Stationary</option>
-                <option value="">Drink-ware</option>
+              <select class="f-input-contact f-width">
+                <option v-for="(category, index) in categories" :key="index" :value="category.id">{{ category.category_name }}</option>
               </select>
             </div>
         </div>
     </div>
     <div class="width-70 d-flex shop-page">
         <!-- card -->
-        <div class="cat-card-holder p-relative width-q4">
+        <div class="cat-card-holder p-relative width-q4" v-for="(product, index) in products" :key="index">
             <div class="cat-card-holder-img p-absolute">
-              <img src="../../assets/images/jacket-2821961_1280.jpg">
+              <img :src="product.imageUrl" alt="Product Not Found">
+              
             </div>
             <div class="cat-card-holder-bg p-absolute"></div>
             <div class="cat-card-holder-front p-absolute">
-              <p>ENQUIRE <i class="fa-solid fa-paper-plane"></i></p>
+              <RouterLink :to="{ name: 'Product Details', params: { id: product.id }}" :key="$route.fullPath"> 
+                <p>ENQUIRE <i class="fa-solid fa-paper-plane"></i></p>
+              </RouterLink>
             </div>
           </div>
-        <!-- card -->
-        <div class="cat-card-holder p-relative width-q4">
-            <div class="cat-card-holder-img p-absolute">
-              <img src="../../assets/images/jacket-2821961_1280.jpg">
-            </div>
-            <div class="cat-card-holder-bg p-absolute"></div>
-            <div class="cat-card-holder-front p-absolute">
-              <p>ENQUIRE <i class="fa-solid fa-paper-plane"></i></p>
-            </div>
-          </div>
-        <!-- card -->
-        <div class="cat-card-holder p-relative width-q4">
-            <div class="cat-card-holder-img p-absolute">
-              <img src="../../assets/images/jacket-2821961_1280.jpg">
-            </div>
-            <div class="cat-card-holder-bg p-absolute"></div>
-            <div class="cat-card-holder-front p-absolute">
-              <p>ENQUIRE <i class="fa-solid fa-paper-plane"></i></p>
-            </div>
-          </div>
-        <!-- card -->
-        <div class="cat-card-holder p-relative width-q4">
-            <div class="cat-card-holder-img p-absolute">
-              <img src="../../assets/images/jacket-2821961_1280.jpg">
-            </div>
-            <div class="cat-card-holder-bg p-absolute"></div>
-            <div class="cat-card-holder-front p-absolute">
-              <p>ENQUIRE <i class="fa-solid fa-paper-plane"></i></p>
-            </div>
-          </div>
-        <!-- card -->
-        <div class="cat-card-holder p-relative width-q4">
-            <div class="cat-card-holder-img p-absolute">
-              <img src="../../assets/images/jacket-2821961_1280.jpg">
-            </div>
-            <div class="cat-card-holder-bg p-absolute"></div>
-            <div class="cat-card-holder-front p-absolute">
-              <p>ENQUIRE <i class="fa-solid fa-paper-plane"></i></p>
-            </div>
-          </div>
-        <!-- card -->
-        <div class="cat-card-holder p-relative width-q4">
-            <div class="cat-card-holder-img p-absolute">
-              <img src="../../assets/images/jacket-2821961_1280.jpg">
-            </div>
-            <div class="cat-card-holder-bg p-absolute"></div>
-            <div class="cat-card-holder-front p-absolute">
-              <p>ENQUIRE <i class="fa-solid fa-paper-plane"></i></p>
-            </div>
-          </div>
+        <!-- end -->
+          <!-- pagination -->
       <div class="f-width shop-pagination">
         <div class="shop-btn fixed-flexed">
           <button class="btn-default"><i class="fa-solid fa-angle-left"></i></button>
@@ -102,9 +54,89 @@
 import NavBar from '@/components/users/NavBar.vue';
 import ClientFooter from '@/components/users/ClientFooter.vue';
 import HomeBanner from '@/components/users/HomeBanner.vue';
+import UserResponse from '@/components/users/UserResponse.vue';
 
 export default {
 name: 'ProductView',
-components: { NavBar, ClientFooter, HomeBanner }
+components: { NavBar, ClientFooter, HomeBanner, UserResponse },
+data () {
+  return{
+    responseClass: '',
+    dbResponse: '',
+    categories: [],
+    products: []
+  }
+},
+methods: {
+  closeResponse() {
+        this.responseClass = '';
+        this.dbResponse = '';
+      },
+      async getCategories() {
+        try {
+            const { data, error } = await this.$supabase
+                .from("categories")
+                .select("*")
+                .order("created_at", { ascending: false });
+
+            if (error) {
+                this.responseClass = 'my-red displayed';
+                this.dbResponse = 'Failed to fetch categories. Please try again.';
+            } else {
+                this.categories = data;
+            }
+        } catch (error) {
+            this.responseClass = 'my-red displayed';
+            this.dbResponse = 'Server Offline. Please try again later.';
+        }
+    },
+    /* get products */
+    async getProducts() {
+      try {
+        // Fetch products from the 'products' table
+        const { data, error } = await this.$supabase
+          .from("products")
+          .select("*")
+          .order("created_at", { ascending: false });
+
+        // Handle errors
+        if (error) {
+          this.responseClass = "my-red displayed";
+          this.dbResponse = "Failed to fetch products. Please try again.";
+          // console.error("Error fetching products:", error);
+          return;
+        }
+
+        // Fetch image URLs for each product
+        this.products = await Promise.all(
+          data.map(async (product) => {
+            // Get the public URL for the product image
+            const { data: imageData } = await this.$supabase
+              .storage
+              .from("The Dwaf Basket") // Replace with your bucket name
+              .getPublicUrl(`products/${product.product_image}`); // Adjust path if needed
+
+            // Add the image URL to the product object
+            return {
+              ...product,
+              imageUrl: imageData.publicUrl, // Add the image URL to the product
+            };
+          })
+        );
+
+        // console.log("Fetched products with image URLs:", this.products);
+
+      } catch (error) {
+        // Handle unexpected errors
+        this.responseClass = "my-red displayed";
+        this.dbResponse = "Server offline. Please try again later.";
+        // console.error("Unexpected error:", error);
+      }
+    }
+},
+mounted(){
+  this.getCategories()
+  this.getProducts();
+}
 }
 </script>

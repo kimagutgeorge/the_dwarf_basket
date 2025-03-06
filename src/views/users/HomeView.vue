@@ -1,4 +1,5 @@
 <template>
+<UserResponse v-if="responseClass.includes('displayed')" :class="['response-message', responseClass]" :dbResponse="dbResponse" @close="closeResponse" />
   <NavBar/>
   <HomeBanner/>
   <div class="flex-container home-cat">
@@ -8,91 +9,14 @@
         lasting impression</p>
         <div class="flex-container cats f-width">
           <!-- card -->
-          <div class="cat-card-holder p-relative">
+          <div class="cat-card-holder p-relative" v-for="(product, index) in products.slice(0, 8)" :key="index">
             <div class="cat-card-holder-img p-absolute">
-              <img src="../../assets/images/jacket-2821961_1280.jpg">
+              <img :src="product.imageUrl" alt="Product Not Found">
             </div>
             <div class="cat-card-holder-bg p-absolute"></div>
-            <div class="cat-card-holder-front p-absolute">
+            <RouterLink :to="{ name: 'Product Details', params: { id: product.id }}" :key="$route.fullPath"> 
               <p>ENQUIRE <i class="fa-solid fa-paper-plane"></i></p>
-            </div>
-          </div>
-          <!-- end -->
-          <!-- card -->
-          <div class="cat-card-holder p-relative">
-            <div class="cat-card-holder-img p-absolute">
-              <img src="../../assets/images/jacket-2821961_1280.jpg">
-            </div>
-            <div class="cat-card-holder-bg p-absolute"></div>
-            <div class="cat-card-holder-front p-absolute">
-              <p>ENQUIRE <i class="fa-solid fa-paper-plane"></i></p>
-            </div>
-          </div>
-          <!-- end -->
-          <!-- card -->
-          <div class="cat-card-holder p-relative">
-            <div class="cat-card-holder-img p-absolute">
-              <img src="../../assets/images/jacket-2821961_1280.jpg">
-            </div>
-            <div class="cat-card-holder-bg p-absolute"></div>
-            <div class="cat-card-holder-front p-absolute">
-              <p>ENQUIRE <i class="fa-solid fa-paper-plane"></i></p>
-            </div>
-          </div>
-          <!-- end -->
-          <!-- card -->
-          <div class="cat-card-holder p-relative">
-            <div class="cat-card-holder-img p-absolute">
-              <img src="../../assets/images/jacket-2821961_1280.jpg">
-            </div>
-            <div class="cat-card-holder-bg p-absolute"></div>
-            <div class="cat-card-holder-front p-absolute">
-              <p>ENQUIRE <i class="fa-solid fa-paper-plane"></i></p>
-            </div>
-          </div>
-          <!-- end -->
-          <!-- card -->
-          <div class="cat-card-holder p-relative">
-            <div class="cat-card-holder-img p-absolute">
-              <img src="../../assets/images/jacket-2821961_1280.jpg">
-            </div>
-            <div class="cat-card-holder-bg p-absolute"></div>
-            <div class="cat-card-holder-front p-absolute">
-              <p>ENQUIRE <i class="fa-solid fa-paper-plane"></i></p>
-            </div>
-          </div>
-          <!-- end -->
-          <!-- card -->
-          <div class="cat-card-holder p-relative">
-            <div class="cat-card-holder-img p-absolute">
-              <img src="../../assets/images/jacket-2821961_1280.jpg">
-            </div>
-            <div class="cat-card-holder-bg p-absolute"></div>
-            <div class="cat-card-holder-front p-absolute">
-              <p>ENQUIRE <i class="fa-solid fa-paper-plane"></i></p>
-            </div>
-          </div>
-          <!-- end -->
-          <!-- card -->
-          <div class="cat-card-holder p-relative">
-            <div class="cat-card-holder-img p-absolute">
-              <img src="../../assets/images/jacket-2821961_1280.jpg">
-            </div>
-            <div class="cat-card-holder-bg p-absolute"></div>
-            <div class="cat-card-holder-front p-absolute">
-              <p>ENQUIRE <i class="fa-solid fa-paper-plane"></i></p>
-            </div>
-          </div>
-          <!-- end -->
-          <!-- card -->
-          <div class="cat-card-holder p-relative">
-            <div class="cat-card-holder-img p-absolute">
-              <img src="../../assets/images/jacket-2821961_1280.jpg">
-            </div>
-            <div class="cat-card-holder-bg p-absolute"></div>
-            <div class="cat-card-holder-front p-absolute">
-              <p>ENQUIRE <i class="fa-solid fa-paper-plane"></i></p>
-            </div>
+            </RouterLink>
           </div>
           <!-- end -->
            <div class="f-width centered-content">
@@ -212,9 +136,68 @@ import NavBar from '@/components/users/NavBar.vue';
 import ClientFooter from '@/components/users/ClientFooter.vue';
 import ClientStats from '@/components/users/ClientStats.vue';
 import HomeBanner from '@/components/users/HomeBanner.vue';
+import UserResponse from '@/components/users/UserResponse.vue';
 
 export default {
 name: 'HomeView',
-components: { NavBar, ClientFooter, ClientStats, HomeBanner },
+components: { NavBar, ClientFooter, ClientStats, HomeBanner, UserResponse },
+data(){
+  return {
+    products: [],
+    responseClass: '',
+    dbResponse: '',
+  }
+},
+methods: {
+  closeResponse() {
+        this.responseClass = '';
+        this.dbResponse = '';
+      },
+  async getProducts() {
+      try {
+        // Fetch products from the 'products' table
+        const { data, error } = await this.$supabase
+          .from("products")
+          .select("*")
+          .order("created_at", { ascending: false });
+
+        // Handle errors
+        if (error) {
+          this.responseClass = "my-red displayed";
+          this.dbResponse = "Failed to fetch products. Please try again.";
+          // console.error("Error fetching products:", error);
+          return;
+        }
+
+        // Fetch image URLs for each product
+        this.products = await Promise.all(
+          data.map(async (product) => {
+            // Get the public URL for the product image
+            const { data: imageData } = await this.$supabase
+              .storage
+              .from("The Dwaf Basket") // Replace with your bucket name
+              .getPublicUrl(`products/${product.product_image}`); // Adjust path if needed
+
+            // Add the image URL to the product object
+            return {
+              ...product,
+              imageUrl: imageData.publicUrl, // Add the image URL to the product
+            };
+          })
+        );
+
+        // console.log("Fetched products with image URLs:", this.products);
+
+      } catch (error) {
+        // Handle unexpected errors
+        this.responseClass = "my-red displayed";
+        this.dbResponse = "Server offline. Please try again later.";
+        // console.error("Unexpected error:", error);
+      }
+    }
+},
+mounted(){
+  this.getProducts()
+}
 }
 </script>

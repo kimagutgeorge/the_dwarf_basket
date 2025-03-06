@@ -5,6 +5,7 @@ import ContactView from '@/views/users/ContactView.vue';
 import ServiceView from '@/views/users/ServiceView.vue';
 import SingleProductView from '@/views/users/SingleProductView.vue';
 import EnquireView from '@/views/users/EnquireView.vue';
+
 export default [
     {
       path: '/',
@@ -42,7 +43,7 @@ export default [
         },
         {
           path :'/enquire/:id',
-          name: 'EnquireView',
+          name: 'Product Details',
           component: EnquireView,
           props: true
         }

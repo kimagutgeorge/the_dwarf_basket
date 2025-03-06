@@ -21,6 +21,36 @@ p{
     padding: 10px;
     width: calc(100% - 20px);
 }
+/* response classs */
+.response{
+    position:absolute;
+    padding:10px 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    width: calc(96% - 20px);
+    left:2%;
+    top:10px;
+    z-index: 100;
+    display: none;
+}
+.response .fa-solid{
+    font-size: 20px;
+}
+.my-red{
+    background-color: #9f080f;
+    color: #ffffff;
+}
+.my-success{
+    background-color: #5ad85e;
+    color:white;
+}
+.response.displayed{
+    display: flex;
+}
+.responseClass{
+    display: none;
+}
+/* end */
 .nav-bar{
     padding:30px;
 }
