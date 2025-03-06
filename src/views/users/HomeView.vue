@@ -14,9 +14,11 @@
               <img :src="product.imageUrl" alt="Product Not Found">
             </div>
             <div class="cat-card-holder-bg p-absolute"></div>
+            <div class="cat-card-holder-front p-absolute">
             <RouterLink :to="{ name: 'Product Details', params: { id: product.id }}" :key="$route.fullPath"> 
               <p>ENQUIRE <i class="fa-solid fa-paper-plane"></i></p>
             </RouterLink>
+            </div>
           </div>
           <!-- end -->
            <div class="f-width centered-content">
@@ -38,18 +40,14 @@
     </div>
     <div class="cat-row">
       <div class="half">
-        <div class="f-width image-container">
-          <div class="cat-text">Business Cards</div>
+        <div class="f-width image-container" v-for="(category, index) in categories.slice(0,1)" :key="index"  :style="{ backgroundImage: `url(${category.imageUrl})` }">
+          <div class="cat-text">{{ category.category_name }}</div>
           <div class="shading-overlay"></div>
         </div>
       </div>
-      <div class="half">
-        <div class="f-width side-2 image-container">
+      <div class="half cats-2">
+        <div class="f-width side-2 image-container" v-for="(category, index) in categories.slice(1,3)" :key="index"  :style="{ backgroundImage: `url(${category.imageUrl})` }">
           <div class="cat-text">Cooperate Gifts</div>
-          <div class="shading-overlay"></div>
-        </div>
-        <div class="f-width side-2 image-container">
-          <div class="cat-text">Graphic Design</div>
           <div class="shading-overlay"></div>
         </div>
       </div>
@@ -144,15 +142,54 @@ components: { NavBar, ClientFooter, ClientStats, HomeBanner, UserResponse },
 data(){
   return {
     products: [],
+    categories: [],
     responseClass: '',
     dbResponse: '',
   }
 },
 methods: {
   closeResponse() {
-        this.responseClass = '';
-        this.dbResponse = '';
-      },
+    this.responseClass = '';
+    this.dbResponse = '';
+  },
+  async getCategories() {
+    try {
+        // Fetch products from the 'categories' table
+        const { data, error } = await this.$supabase
+          .from("categories")
+          .select("*")
+          .order("created_at", { ascending: false });
+
+        // Handle errors
+        if (error) {
+          this.responseClass = "my-red displayed";
+          this.dbResponse = "Failed to fetch categories. Please try again.";
+          // console.error("Error fetching categories:", error);
+          return;
+        }
+
+        // Fetch image URLs for each product
+        this.categories = await Promise.all(
+          data.map(async (category) => {
+            // Get the public URL for the product image
+            const { data: imageData } = await this.$supabase
+              .storage
+              .from("The Dwaf Basket") 
+              .getPublicUrl(`categories/${category.category_image}`);
+            return {
+              ...category,
+              imageUrl: imageData.publicUrl,
+            };
+          })
+        );
+
+      } catch (error) {
+        // Handle unexpected errors
+        this.responseClass = "my-red displayed";
+        this.dbResponse = "Server offline. Please try again later.";
+        // console.error("Unexpected error:", error);
+      }
+},
   async getProducts() {
       try {
         // Fetch products from the 'products' table
@@ -175,13 +212,13 @@ methods: {
             // Get the public URL for the product image
             const { data: imageData } = await this.$supabase
               .storage
-              .from("The Dwaf Basket") // Replace with your bucket name
-              .getPublicUrl(`products/${product.product_image}`); // Adjust path if needed
+              .from("The Dwaf Basket") 
+              .getPublicUrl(`products/${product.product_image}`); 
 
-            // Add the image URL to the product object
+
             return {
               ...product,
-              imageUrl: imageData.publicUrl, // Add the image URL to the product
+              imageUrl: imageData.publicUrl, 
             };
           })
         );
@@ -198,6 +235,7 @@ methods: {
 },
 mounted(){
   this.getProducts()
+  this.getCategories();
 }
 }
 </script>

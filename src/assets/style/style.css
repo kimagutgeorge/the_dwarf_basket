@@ -1506,6 +1506,9 @@ WEBSITE RESIZE
     .search-box.fixed-flexed.f-90{
         width: 95.5%;
     }
+    .cats-2{
+        margin-top:20px;
+    }
     .flex-container.home-cat.services .half .service-description .flex-container{
         flex-direction: row;
     }
