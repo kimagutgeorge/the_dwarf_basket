@@ -21,23 +21,23 @@
         </div>
     </div>
     <div class="width-70 d-flex shop-page">
-        <!-- card -->
-        <div class="cat-card-holder p-relative width-q4" v-for="(product, index) in products" :key="index">
-            <div class="cat-card-holder-img p-absolute">
-              <img :src="product.imageUrl" alt="Product Not Found">
-              
-            </div>
-            <RouterLink :to="{ name: 'Product Details', params: { product_name: product.product_name }}" :key="$route.fullPath"> 
-              <div class="cat-card-holder-bg p-absolute"></div>
-            </RouterLink>
-            <div class="cat-card-holder-front p-absolute">
-              <RouterLink :to="{ name: 'Product Enquiry', params: { id: product.product_name }}" :key="$route.fullPath"> 
-                <p>ENQUIRE <i class="fa-solid fa-paper-plane"></i></p>
-              </RouterLink>
-            </div>
+    <!-- card -->
+      <div class="cat-card-holder p-relative width-q4" v-for="(product, index) in products" :key="index">
+          <div class="cat-card-holder-img p-absolute">
+            <img :src="product.imageUrl" alt="Product Not Found">
+            
           </div>
-        <!-- end -->
-          <!-- pagination -->
+          <RouterLink :to="{ name: 'Product Details', params: { product_name: product.product_name }}" :key="$route.fullPath"> 
+            <div class="cat-card-holder-bg p-absolute"></div>
+          </RouterLink>
+          <div class="cat-card-holder-front p-absolute">
+            <RouterLink :to="{ name: 'Product Enquiry', params: { id: product.product_name }}" :key="$route.fullPath"> 
+              <p>ENQUIRE <i class="fa-solid fa-paper-plane"></i></p>
+            </RouterLink>
+          </div>
+        </div>
+      <!-- end -->
+      <!-- pagination -->
       <div class="f-width shop-pagination">
         <div class="shop-btn fixed-flexed">
           <button class="btn-default"><i class="fa-solid fa-angle-left"></i></button>
