@@ -265,7 +265,16 @@ opacity: 1;
   }
 }
 
+@media (max-width: 600px) {
+    .custom-container {
+        width: 94%;
+      }
+  }
+
 @media (max-width: 480px) {
+    .custom-container {
+        width: 92%;
+      }
   .custom-product-card {
     flex: 0 0 calc(100% - 20px); /* Show 1 card */
   }

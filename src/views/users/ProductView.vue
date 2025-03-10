@@ -8,7 +8,7 @@
 <div class="flex-container products q3-row">
     <div class="width-30">
         <div class="search-box fixed-flexed f-90">
-            <input type="text" class="f-input" placeholder="Search..." v-model="cat_search" @keyup="searchWithButton">
+            <input type="text" class="f-input" placeholder="Search..." v-model="type_search" @keyup="searchWithButton">
         </div>
         <div class="f-width product-cats">
             <h4>SERVICES CATEGORIES</h4>
@@ -69,6 +69,7 @@ data () {
     categories: [],
     products: [],
     cat_search: '',
+    type_search: '',
     currentPage: 1, // Current page number
     productsPerPage: 15, // Number of products per page (3 columns x 5 rows)
   }
@@ -160,14 +161,17 @@ methods: {
       }
     },
     async searchWithButton(){
-      if (!this.cat_search.trim()) return; // Prevent empty searches
+      if (!this.type_search.trim()){
+        this.getProducts();
+        return; // Prevent empty searches
+      } 
       try {
         // Fetch products from the 'products' table
         const { data, error } = await this.$supabase
           .from("products")
           .select("*")
           .order("created_at", { ascending: false })
-          .ilike("product_name", `%${this.cat_search}%`); // Partial matching
+          .ilike("product_name", `%${this.type_search}%`); // Partial matching
 
         // Handle errors
         if (error) {

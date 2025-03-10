@@ -39,7 +39,7 @@
           <textarea class="f-width f-input-contact"  v-model="message" required></textarea>
         </div>
         <div class="f-width with-top" >
-          <button class="btn-default" style="margin-left:2.5%" @click="addContact">SEND</button>
+          <button class="btn-default" style="margin-left:2.5%" >SEND</button>
         </div>
       </form>
       </div>
@@ -75,11 +75,11 @@
       this.dbResponse = '';
     },
     async addContact(){
-      if(this.name == '' || this.email == '' || this.subject == '' || this.message == ''){
-        this.responseClass = 'my-red displayed';
-        this.dbResponse = 'Please Fill the Required Fields';
-        return
-      }
+      // if(this.name == '' || this.email == '' || this.subject == '' || this.message == ''){
+      //   this.responseClass = 'my-red displayed';
+      //   this.dbResponse = 'Please Fill the Required Fields';
+      //   return
+      // }
       //insert
       try{
         const {error} = await this.$supabase
