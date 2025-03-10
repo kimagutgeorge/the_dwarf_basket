@@ -72,6 +72,10 @@
         </div>
     </div>
    </div>
+   <!-- other products -->
+   <div class="flex-container home-cat">
+    <HomeProducts/>
+    </div>
     <ClientFooter/>
     </template>
     
@@ -80,10 +84,11 @@
     import ClientFooter from '@/components/users/ClientFooter.vue';
     import HomeBanner from '@/components/users/HomeBanner.vue';
     import UserResponse from '@/components/users/UserResponse.vue';
+    import HomeProducts from '@/components/users/HomeProducts.vue';
     
     export default {
     name: 'SingleProductView',
-    components: { NavBar, ClientFooter, HomeBanner, UserResponse },
+    components: { NavBar, ClientFooter, HomeBanner, UserResponse, HomeProducts },
     props: ['product_name'],
     data() {
         return {

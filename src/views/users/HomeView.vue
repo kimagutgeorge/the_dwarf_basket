@@ -3,33 +3,7 @@
   <NavBar/>
   <HomeBanner/>
   <div class="flex-container home-cat">
-    <div class="q3-row centered-content">
-      <h2 class="main-title">Feature Product</h2>
-      <p>Every single product that carries your brand is an opportunity to make a
-        lasting impression</p>
-        <div class="flex-container cats f-width">
-          <!-- card -->
-          <div class="cat-card-holder p-relative" v-for="(product, index) in products.slice(0, 8)" :key="index">
-            <div class="cat-card-holder-img p-absolute">
-              <img :src="product.imageUrl" alt="Product Not Found">
-            </div>
-            <RouterLink :to="{ name: 'Product Details', params: { product_name: product.product_name }}" :key="$route.fullPath"> 
-              <div class="cat-card-holder-bg p-absolute"></div>
-            </RouterLink>
-            <div class="cat-card-holder-front p-absolute">
-            <RouterLink :to="{ name: 'Product Details', params: { product_name: product.product_name }}" :key="$route.fullPath"> 
-              <p>ENQUIRE <i class="fa-solid fa-paper-plane"></i></p>
-            </RouterLink>
-            </div>
-          </div>
-          <!-- end -->
-           <div class="f-width centered-content">
-            <router-link to="/products">
-              <button class="btn-default with-top-40">EXPLORE MORE <i class="fa-solid fa-angle-right"></i></button>
-            </router-link>
-           </div>
-        </div>
-    </div>
+  <HomeProducts/>
   </div>
   <!-- feature highlights -->
   <ClientStats/>
@@ -92,25 +66,35 @@
    <!-- reviews -->
    <div class="flex-container home-cat reviews f-width">
     <div class="half">
-      <div class="review-card">
-        <div class="review-card-top fixed-flexed">
-          <img src="../../assets/logo/profile.png"><span>George Kimagut</span>
-        </div>
-        <div class="review-body">
-          <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-          <div class="fixed-flexed">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </div>
+    <!-- Review Card -->
+    <div class="review-card" v-if="product_reviews.length > 0">
+      <div class="review-card-top fixed-flexed">
+        <img src="../../assets/logo/profile.png" alt="Profile">
+        <span>{{ product_reviews[currentReviewIndex].reviewer }}</span>
+      </div>
+      <div class="review-body">
+        <p>{{ product_reviews[currentReviewIndex].review }}</p>
+        <div class="fixed-flexed" style="margin-top: 10px;">
+          <span
+            v-for="star in product_reviews[currentReviewIndex].review_stars"
+            :key="star"
+            class="star active"
+          >
+            &#9733;
+          </span>
         </div>
       </div>
-      <div class="review-pagination fixed-flexed">
-        <button class="paginate-btn"><i class="fa-solid fa-angle-left"></i></button>
-        <button class="paginate-btn"><i class="fa-solid fa-angle-right"></i></button>
-      </div>
+    </div>
+    <!-- Pagination Controls -->
+    <div class="review-pagination fixed-flexed">
+      <button class="paginate-btn" @click="prevReview" :disabled="currentReviewIndex === 0">
+        <i class="fa-solid fa-angle-left"></i>
+      </button>
+      <button class="paginate-btn" @click="nextReview" :disabled="currentReviewIndex === product_reviews.length - 1">
+        <i class="fa-solid fa-angle-right"></i>
+      </button>
+    </div>
+    <!-- end of review -->
     </div>
     <div class="half sec">
       <div class="review-topic h-card">
@@ -137,16 +121,19 @@ import ClientFooter from '@/components/users/ClientFooter.vue';
 import ClientStats from '@/components/users/ClientStats.vue';
 import HomeBanner from '@/components/users/HomeBanner.vue';
 import UserResponse from '@/components/users/UserResponse.vue';
+import HomeProducts from '@/components/users/HomeProducts.vue';
 
 export default {
 name: 'HomeView',
-components: { NavBar, ClientFooter, ClientStats, HomeBanner, UserResponse },
+components: { NavBar, ClientFooter, ClientStats, HomeBanner, UserResponse, HomeProducts },
 data(){
   return {
     products: [],
     categories: [],
     responseClass: '',
     dbResponse: '',
+    product_reviews: [],
+    currentReviewIndex: 0
   }
 },
 methods: {
@@ -192,52 +179,148 @@ methods: {
         // console.error("Unexpected error:", error);
       }
 },
-  async getProducts() {
-      try {
-        // Fetch products from the 'products' table
-        const { data, error } = await this.$supabase
-          .from("products")
+  // async getProducts() {
+  //     try {
+  //       // Fetch products from the 'products' table
+  //       const { data, error } = await this.$supabase
+  //         .from("products")
+  //         .select("*")
+  //         .order("created_at", { ascending: false });
+
+  //       // Handle errors
+  //       if (error) {
+  //         this.responseClass = "my-red displayed";
+  //         this.dbResponse = "Failed to fetch products. Please try again.";
+  //         // console.error("Error fetching products:", error);
+  //         return;
+  //       }
+
+  //       // Fetch image URLs for each product
+  //       this.products = await Promise.all(
+  //         data.map(async (product) => {
+  //           // Get the public URL for the product image
+  //           const { data: imageData } = await this.$supabase
+  //             .storage
+  //             .from("The Dwaf Basket") 
+  //             .getPublicUrl(`products/${product.product_image}`); 
+
+
+  //           return {
+  //             ...product,
+  //             imageUrl: imageData.publicUrl, 
+  //           };
+  //         })
+  //       );
+
+  //       // console.log("Fetched products with image URLs:", this.products);
+
+  //     } catch (error) {
+  //       // Handle unexpected errors
+  //       this.responseClass = "my-red displayed";
+  //       this.dbResponse = "Server offline. Please try again later.";
+  //       // console.error("Unexpected error:", error);
+  //     }
+  //   },
+    async getReviews() {
+        try {
+          const { data, error } = await this.$supabase
+          .from("reviews")
           .select("*")
-          .order("created_at", { ascending: false });
+          .eq('review_status', 1);
 
-        // Handle errors
-        if (error) {
-          this.responseClass = "my-red displayed";
-          this.dbResponse = "Failed to fetch products. Please try again.";
-          // console.error("Error fetching products:", error);
-          return;
+            if (error) {
+              console.log(error)
+                this.responseClass = 'my-red displayed';
+                this.dbResponse = 'Failed to fetch reviews. Please try again.';
+            } else {
+                this.product_reviews = data;
+            }
+        } catch (error) {
+            this.responseClass = 'my-red displayed';
+            this.dbResponse = 'Server Offline. Please try again later.';
+            console.log(error)
         }
-
-        // Fetch image URLs for each product
-        this.products = await Promise.all(
-          data.map(async (product) => {
-            // Get the public URL for the product image
-            const { data: imageData } = await this.$supabase
-              .storage
-              .from("The Dwaf Basket") 
-              .getPublicUrl(`products/${product.product_image}`); 
-
-
-            return {
-              ...product,
-              imageUrl: imageData.publicUrl, 
-            };
-          })
-        );
-
-        // console.log("Fetched products with image URLs:", this.products);
-
-      } catch (error) {
-        // Handle unexpected errors
-        this.responseClass = "my-red displayed";
-        this.dbResponse = "Server offline. Please try again later.";
-        // console.error("Unexpected error:", error);
+    },
+    prevReview() {
+      if (this.currentReviewIndex > 0) {
+        this.currentReviewIndex--;
+      }
+    },
+    nextReview() {
+      if (this.currentReviewIndex < this.product_reviews.length - 1) {
+        this.currentReviewIndex++;
       }
     }
 },
 mounted(){
-  this.getProducts()
+  // this.getProducts()
   this.getCategories();
+  this.getReviews();
 }
 }
 </script>
+
+<style>
+/*
+.review-card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+}
+
+.review-card-top {
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.review-card-top img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.review-body p {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.fixed-flexed {
+  display: flex;
+  align-items: center;
+}
+
+.star.active {
+  color: gold;
+  font-size: 20px;
+}
+
+.review-pagination {
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.paginate-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin: 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.paginate-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.paginate-btn:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+*/
+</style>
