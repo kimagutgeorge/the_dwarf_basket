@@ -1228,7 +1228,59 @@ textarea{
 .with-pattern-bg img{
     width: 100%;
 }
-
+.f-width.fixed-flexed.pro-btn{
+    margin-top: 40px;
+    border-bottom: 1px solid rgb(200, 200, 200);
+}
+.f-width.fixed-flexed.pro-btn span{
+    padding: 5px;
+    cursor: pointer;
+    border:1px solid rgb(200, 200, 200);
+}
+.f-width.fixed-flexed.pro-btn .is-active{
+    background-color: rgb(0, 130, 189);
+    border-color: rgb(0, 130, 189);
+    /* color: #ffffff; */
+}
+.review-stars-btn{
+    margin-top: 20px;
+}
+.review-stars-btn .star{
+    color: rgb(200, 200, 200);
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+.review-stars-btn .star:hover{
+    color:#EBA121;
+}
+.star {
+    color: #ccc; /* Default star color (unselected) */
+    transition: color 0.2s;
+  }
+  
+  .star.active {
+    color: #EBA121; /* Yellow color for selected stars */
+  }
+.rev-card{
+    width:95%;
+    padding:10px;
+    margin-left: 0% !important;
+    margin-top: 30px;
+    background-color: rgb(230, 230, 230);
+    border-radius: 10px;
+}
+.rev-card h5{
+    font-size: 20px;
+    color:#303030;
+}
+.rev-card p{
+    margin-top: 0px !important;
+    padding-left: 0px !important;
+}
+.rev-card .review-stars-btn{
+    margin-top: 10px;
+}
 
 /*************
 *************

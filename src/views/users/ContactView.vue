@@ -104,6 +104,7 @@
               'Content-Type': 'multipart/form-data'
         }});
         const response_data = response.data
+        // console.log(response_data.message)
         if(response_data.message == '1'){
           /* response */
         this.responseClass = 'my-success displayed';
