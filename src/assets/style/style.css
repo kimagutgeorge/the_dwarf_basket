@@ -22,7 +22,28 @@ p{
     width: calc(100% - 20px);
 }
 /* animations */
+/*.home-banner:hover */.random-movement{
+    animation: rotateAnim 2s ease-in-out 0.5s infinite alternate both;
+}
+/*.home-banner:hover */.random-movement-4{
+    animation: upDown 2s ease-in-out 0.6s infinite alternate both;
 
+}
+.random-movement-2{
+    animation: leftRight 2s ease-in-out 1s infinite alternate both;
+}
+@keyframes rotateAnim {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(10deg); }
+}
+@keyframes upDown {
+    from { margin-top: 0px; }
+    to { margin-top: 20px; } /* Moves down */
+}
+@keyframes leftRight {
+    from { margin-left: -100px; }
+    to { margin-left: -80px; } /* Moves down */
+}
 /* response classs */
 .response{
     position:fixed;
