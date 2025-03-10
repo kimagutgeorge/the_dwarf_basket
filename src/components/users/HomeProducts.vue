@@ -160,7 +160,8 @@ export default {
 /* Product Card */
 .custom-product-card {
   flex: 0 0 calc(25% - 20px); /* Adjust based on slidesToShow */
-  margin-right: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
   position: relative;
   box-sizing: border-box;
   transition: transform 0.3s ease;
@@ -217,7 +218,7 @@ opacity: 1;
   background: rgba(0, 0, 0, 0.5);
   color: white;
   border: none;
-  padding: 10px;
+  padding: 10px 15px;
   cursor: pointer;
   z-index: 10;
   transition: background 0.3s ease;
@@ -228,16 +229,16 @@ opacity: 1;
 }
 
 .custom-prev {
-  left: 10px;
+  left: 0px;
 }
 
 .custom-next {
-  right: 10px;
+  right: 0px;
 }
 
 /* Explore More Button */
 .custom-explore-btn {
-  background-color: #007bff;
+  background-color: rgb(0, 130, 189);
   color: white;
   border: none;
   padding: 10px 20px;

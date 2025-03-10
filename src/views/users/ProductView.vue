@@ -8,8 +8,7 @@
 <div class="flex-container products q3-row">
     <div class="width-30">
         <div class="search-box fixed-flexed f-90">
-            <button class="btn-search"><i class="fa-solid fa-search"></i></button>
-            <input type="text" class="f-input" placeholder="Search...">
+            <input type="text" class="f-input" placeholder="Search..." v-model="cat_search" @keyup="searchWithButton">
         </div>
         <div class="f-width product-cats">
             <h4>SERVICES CATEGORIES</h4>
@@ -160,6 +159,50 @@ methods: {
         this.dbResponse = "Server offline. Please try again later.";
       }
     },
+    async searchWithButton(){
+      if (!this.cat_search.trim()) return; // Prevent empty searches
+      try {
+        // Fetch products from the 'products' table
+        const { data, error } = await this.$supabase
+          .from("products")
+          .select("*")
+          .order("created_at", { ascending: false })
+          .ilike("product_name", `%${this.cat_search}%`); // Partial matching
+
+        // Handle errors
+        if (error) {
+          this.responseClass = "my-red displayed";
+          this.dbResponse = "Failed to fetch products. Please try again.";
+          // console.error("Error fetching products:", error);
+          return;
+        }
+
+        // Fetch image URLs for each product
+        this.products = await Promise.all(
+          data.map(async (product) => {
+            // Get the public URL for the product image
+            const { data: imageData } = await this.$supabase
+              .storage
+              .from("The Dwaf Basket") // Replace with your bucket name
+              .getPublicUrl(`products/${product.product_image}`); // Adjust path if needed
+
+            // Add the image URL to the product object
+            return {
+              ...product,
+              imageUrl: imageData.publicUrl, // Add the image URL to the product
+            };
+          })
+        );
+
+        // console.log("Fetched products with image URLs:", this.products);
+
+      } catch (error) {
+        // Handle unexpected errors
+        this.responseClass = "my-red displayed";
+        this.dbResponse = "Server offline. Please try again later.";
+        // console.error("Unexpected error:", error);
+      }
+    },
     async searchCategory(){
       if(this.cat_search == 'All'){
         this.getProducts()
@@ -288,7 +331,7 @@ mounted(){
 
 .custom-pagination-controls button {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: rgb(0, 130, 189);
   color: white;
   border: none;
   cursor: pointer;
@@ -302,5 +345,17 @@ mounted(){
 
 .custom-pagination-controls button:hover:not(:disabled) {
   background-color: #0056b3;
+}
+/* Responsive Design */
+@media (max-width: 900px) {
+  .custom-product-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for screens 900px and below */
+  }
+}
+
+@media (max-width: 480px) {
+  .custom-product-grid {
+    grid-template-columns: repeat(1, 1fr); /* 1 column for screens 480px and below */
+  }
 }
 </style>
