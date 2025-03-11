@@ -42,7 +42,7 @@
       <div class="col-body">
         <h4>Categories</h4>
         <div class="col-body-link">
-          <li class="touch" v-for="(category, index) in categories.slice(0, 6) " :key="index">{{ category.category_name }}</li>
+          <li class="touch" v-for="(category, index) in categories.slice(0, 8) " :key="index">{{ category.category_name }}</li>
         </div>
       </div>
    </div>

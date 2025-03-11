@@ -145,9 +145,10 @@ methods: {
     try {
         // Fetch products from the 'categories' table
         const { data, error } = await this.$supabase
-          .from("categories")
-          .select("*")
-          .order("created_at", { ascending: false });
+        .from("categories")
+        .select("*")
+        .order("created_at", { ascending: false });
+
 
         // Handle errors
         if (error) {
@@ -159,18 +160,21 @@ methods: {
 
         // Fetch image URLs for each product
         this.categories = await Promise.all(
-          data.map(async (category) => {
-            // Get the public URL for the product image
-            const { data: imageData } = await this.$supabase
-              .storage
-              .from("The Dwaf Basket") 
-              .getPublicUrl(`categories/${category.category_image}`);
-            return {
-              ...category,
-              imageUrl: imageData.publicUrl,
-            };
-          })
-        );
+        data.map(async (category) => {
+          const { data: imageData } = await this.$supabase
+            .storage
+            .from("The Dwaf Basket")
+            .getPublicUrl(`categories/${category.category_image}`);
+            
+          return {
+            ...category,
+            imageUrl: imageData.publicUrl,
+          };
+        })
+      );
+
+      // Fisher-Yates shuffle algorithm
+      this.categories.sort(() => Math.random() - 0.5);
 
       } catch (error) {
         // Handle unexpected errors
@@ -179,48 +183,6 @@ methods: {
         // console.error("Unexpected error:", error);
       }
 },
-  // async getProducts() {
-  //     try {
-  //       // Fetch products from the 'products' table
-  //       const { data, error } = await this.$supabase
-  //         .from("products")
-  //         .select("*")
-  //         .order("created_at", { ascending: false });
-
-  //       // Handle errors
-  //       if (error) {
-  //         this.responseClass = "my-red displayed";
-  //         this.dbResponse = "Failed to fetch products. Please try again.";
-  //         // console.error("Error fetching products:", error);
-  //         return;
-  //       }
-
-  //       // Fetch image URLs for each product
-  //       this.products = await Promise.all(
-  //         data.map(async (product) => {
-  //           // Get the public URL for the product image
-  //           const { data: imageData } = await this.$supabase
-  //             .storage
-  //             .from("The Dwaf Basket") 
-  //             .getPublicUrl(`products/${product.product_image}`); 
-
-
-  //           return {
-  //             ...product,
-  //             imageUrl: imageData.publicUrl, 
-  //           };
-  //         })
-  //       );
-
-  //       // console.log("Fetched products with image URLs:", this.products);
-
-  //     } catch (error) {
-  //       // Handle unexpected errors
-  //       this.responseClass = "my-red displayed";
-  //       this.dbResponse = "Server offline. Please try again later.";
-  //       // console.error("Unexpected error:", error);
-  //     }
-  //   },
     async getReviews() {
         try {
           const { data, error } = await this.$supabase
